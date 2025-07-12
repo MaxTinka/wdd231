@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WDD 231 - Web Frontend Development course portal">
+    <meta name="author" content="Your Name">
+    <title>WDD 231: Web Frontend Development | Your Name</title>
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css" media="(min-width: 768px)">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/dates.js" defer></script>
+    <script src="scripts/courses.js" defer></script>
+</head>
+<body>
+    <header role="banner">
+        <div class="header-container">
+            <div class="logo">
+                <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
+                    <circle cx="30" cy="30" r="25" fill="#2c3e50"/>
+                    <text x="30" y="38" font-family="Roboto" font-size="20" fill="white" text-anchor="middle">WD</text>
+                </svg>
+                <span class="name">Your Name</span>
+            </div>
+            <button id="menu-button" aria-expanded="false" aria-controls="primary-nav" aria-label="Navigation menu">
+                <span class="hamburger-icon">☰</span>
+                <span class="sr-only">Menu</span>
+            </button>
+        </div>
+    </header>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <ul id="primary-nav">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="chamber/">Chamber</a></li>
+            <li><a href="final/">Final</a></li>
+        </ul>
+    </nav>
+
+    <main role="main">
+        <h1>Home</h1>
+        
+        <section class="hero">
+            <h2>Welcome to My Course Portal</h2>
+            <picture>
+                <source media="(min-width: 1200px)" srcset="images/hero-1200.webp">
+                <source media="(min-width: 768px)" srcset="images/hero-800.webp">
+                <img src="images/hero-400.webp" 
+                     alt="Web development illustration" 
+                     width="1200" 
+                     height="600"
+                     loading="lazy">
+            </picture>
+            <p>This site showcases my work for WDD 231 - Web Frontend Development.</p>
+        </section>
+
+        <section class="courses-section">
+            <h2>Web and Computer Programming Certificate</h2>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Courses</button>
+                <button class="filter-btn" data-filter="wdd">WDD Courses</button>
+                <button class="filter-btn" data-filter="cse">CSE Courses</button>
+            </div>
+            
+            <div class="courses-container">
+                <!-- Courses will be dynamically inserted here by courses.js -->
+            </div>
+            
+            <p class="credit-total"></p>
+        </section>
+
+        <section class="projects">
+            <h2>Course Projects</h2>
+            <div class="project-cards">
+                <article>
+                    <h3>Chamber of Commerce</h3>
+                    <img src="images/chamber.webp" 
+                         alt="Chamber of commerce project preview" 
+                         width="400" 
+                         height="225"
+                         loading="lazy">
+                    <p>A responsive website project for a local chamber of commerce.</p>
+                    <a href="chamber/" class="button">View Project</a>
+                </article>
+                <article>
+                    <h3>Final Project</h3>
+                    <img src="images/final.webp" 
+                         alt="Final project preview" 
+                         width="400" 
+                         height="225"
+                         loading="lazy">
+                    <p>Comprehensive demonstration of frontend development skills.</p>
+                    <a href="final/" class="button">View Project</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Learning Resources</h2>
+            <ul>
+                <li><a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">MDN Web Docs</a> - Comprehensive web development reference</li>
+                <li><a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer">W3C Web Accessibility</a> - Accessibility guidelines</li>
+                <li><a href="https://web.dev/" target="_blank" rel="noopener noreferrer">web.dev</a> - Modern web development techniques</li>
+                <li><a href="https://css-tricks.com/" target="_blank" rel="noopener noreferrer">CSS-Tricks</a> - CSS tips and tricks</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="social-links">
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+        <p>
+            &copy; <span id="current-year"></span> | 
+            <span class="name">Your Name</span> | 
+            <span class="location">Your State/Country</span>
+        </p>
+        <p id="lastModified">Last Modified: </p>
+    </footer>
+</body>
+</html>
