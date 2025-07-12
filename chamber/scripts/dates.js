@@ -1,7 +1,7 @@
-// Function to update the copyright year and last modified date
+// Function to update footer dates
 function updateFooterDates() {
     try {
-        // Get current year for copyright
+        // Update copyright year
         const currentYear = new Date().getFullYear();
         const yearElement = document.getElementById('current-year');
         
@@ -11,11 +11,10 @@ function updateFooterDates() {
             console.warn('Copyright year element not found');
         }
 
-        // Get last modified date
+        // Update last modified date
         const lastModifiedElement = document.getElementById('lastModified');
         
         if (lastModifiedElement) {
-            // Format the last modified date nicely
             const lastModified = new Date(document.lastModified);
             const options = { 
                 year: 'numeric', 
@@ -27,8 +26,6 @@ function updateFooterDates() {
             const formattedDate = lastModified.toLocaleDateString('en-US', options);
             
             lastModifiedElement.textContent = formattedDate;
-            
-            // Add machine-readable date
             lastModifiedElement.setAttribute('datetime', lastModified.toISOString());
         } else {
             console.warn('Last modified element not found');
@@ -41,5 +38,5 @@ function updateFooterDates() {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', updateFooterDates);
 
-// Update the dates every minute (optional)
+// Optional: Update every minute to keep dates current
 setInterval(updateFooterDates, 60000);
