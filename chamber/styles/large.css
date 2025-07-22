@@ -1,96 +1,43 @@
-/* ===== DESKTOP STYLES (768px and up) ===== */
-@media screen and (min-width: 768px) {
-    /* ===== GLOBAL LAYOUT ===== */
-    body {
-        font-size: 1.05rem;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-    }
-
-    /* ===== HEADER & NAVIGATION ===== */
-    #menu-button {
-        display: none;
-    }
-
-    #primary-nav {
-        max-height: none;
-        display: block;
-        background-color: var(--primary-color);
-        padding: 0 2rem;
-    }
-
-    #primary-nav ul {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        padding: 0;
-    }
-
-    #primary-nav li {
-        margin-bottom: 0;
-    }
-
-    #primary-nav a {
-        padding: 1rem 1.5rem;
-    }
-
-    /* ===== DIRECTORY PAGE ENHANCEMENTS ===== */
-    .directory-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-    }
-
-    .view-toggle {
-        margin: 0;
-    }
-
-    .member-container {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .member-card {
-        padding: 1.5rem;
-    }
-
-    /* ===== FOOTER ENHANCEMENTS ===== */
-    .footer-content {
-        grid-template-columns: repeat(3, 1fr);
-        align-items: start;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .social-links {
-        justify-content: flex-end;
-    }
-
-    .development-info {
-        text-align: right;
-    }
-}
-
 /* ===== LARGE DESKTOP ENHANCEMENTS (1024px and up) ===== */
 @media screen and (min-width: 1024px) {
     /* ===== TYPOGRAPHY ===== */
     h1 {
         font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
     }
 
     h2 {
         font-size: 2rem;
+        line-height: 1.3;
     }
 
     /* ===== MEMBER DIRECTORY ===== */
-    .member-container {
+    .member-container.grid-view {
         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
         gap: 2rem;
+    }
+
+    .member-container.list-view {
+        display: block;
+    }
+
+    .member-container.list-view .member-card {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+    }
+
+    /* Increase hover effect */
+    @media (prefers-reduced-motion: no-preference) {
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
     }
 
     /* ===== HERO SECTIONS ===== */
@@ -102,11 +49,13 @@
         padding: 3rem 0;
     }
 
-    /* ===== ANIMATIONS ===== */
-    @media (prefers-reduced-motion: no-preference) {
-        .member-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+    /* ===== FOOTER ===== */
+    footer {
+        padding: 2rem 0;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
     }
 }
