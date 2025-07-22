@@ -137,10 +137,35 @@ main {
     color: white;
 }
 
-.member-container {
+.view-toggle button svg {
+    fill: var(--primary-color);
+    transition: fill 0.3s ease;
+}
+
+.view-toggle button.active svg {
+    fill: var(--light-color);
+}
+
+.view-toggle button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.member-container.grid-view {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
+}
+
+.member-container.list-view {
+    display: block;
+}
+
+.member-container.list-view .member-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .member-card {
@@ -153,6 +178,17 @@ main {
 
 .member-card:hover {
     transform: translateY(-3px);
+}
+
+.member-container.list-view .member-card:hover {
+    transform: none; /* optional: reduce hover effect on list */
+}
+
+.member-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
 }
 
 /* ===== FOOTER STYLES ===== */
