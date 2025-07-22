@@ -5,6 +5,7 @@ main {
     margin: 0 auto;
 }
 
+/* View Toggle */
 .view-toggle {
     display: flex;
     justify-content: flex-end;
@@ -18,7 +19,12 @@ main {
     border-radius: 4px;
     padding: 0.5rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.view-toggle button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
 .view-toggle button.active {
@@ -37,6 +43,7 @@ main {
     gap: 1.5rem;
 }
 
+/* Member Card */
 .member-card {
     background: white;
     border-radius: var(--border-radius);
@@ -45,10 +52,12 @@ main {
     transition: transform 0.3s ease;
 }
 
-.member-card:hover {
+.member-card:hover,
+.member-card:focus-within {
     transform: translateY(-5px);
 }
 
+/* Member Image */
 .member-image {
     position: relative;
     height: 200px;
@@ -61,6 +70,7 @@ main {
     object-fit: cover;
 }
 
+/* Membership Badge */
 .membership-badge {
     position: absolute;
     top: 1rem;
@@ -78,6 +88,7 @@ main {
 
 .membership-badge.silver-member {
     background-color: #c0c0c0;
+    color: var(--dark-color);
 }
 
 .membership-badge.gold-member {
@@ -85,6 +96,7 @@ main {
     color: var(--dark-color);
 }
 
+/* Member Info */
 .member-info {
     padding: 1rem;
 }
@@ -102,8 +114,10 @@ main {
     font-weight: 500;
 }
 
-.member-website:hover {
+.member-website:hover,
+.member-website:focus {
     text-decoration: underline;
+    outline: none;
 }
 
 /* List View */
@@ -117,6 +131,7 @@ main {
     display: flex;
     flex-direction: row;
     max-height: 150px;
+    transition: flex-direction 0.3s ease;
 }
 
 .list-view .member-image {
