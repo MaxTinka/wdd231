@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You | Local Chamber of Commerce</title>
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/large.css" media="(min-width: 768px)" />
+  <link rel="stylesheet" href="styles/join.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    main {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    dl {
+      margin-top: 1.5rem;
+      border-top: 1px solid #ccc;
+      padding-top: 1rem;
+    }
+
+    dt {
+      font-weight: 700;
+      margin-top: 0.75rem;
+    }
+
+    dd {
+      margin-left: 1rem;
+      margin-bottom: 0.75rem;
+      color: #555;
+      word-wrap: break-word;
+    }
+
+    a.home-link {
+      display: inline-block;
+      margin-top: 2rem;
+      text-align: center;
+      background-color: #3498db;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    a.home-link:hover,
+    a.home-link:focus {
+      background-color: #217dbb;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <main role="main" aria-labelledby="thankyou-heading">
+    <h1 id="thankyou-heading">Thank You for Joining the Local Chamber!</h1>
+    <p>Your application has been successfully submitted. We appreciate your interest in becoming a member of our community.</p>
+
+    <section aria-label="Submitted Information">
+      <h2>Here is the information you submitted:</h2>
+      <dl>
+        <dt>First Name</dt>
+        <dd id="firstName">Loading...</dd>
+
+        <dt>Last Name</dt>
+        <dd id="lastName">Loading...</dd>
+
+        <dt>Email Address</dt>
+        <dd id="email">Loading...</dd>
+
+        <dt>Mobile Phone</dt>
+        <dd id="phone">Loading...</dd>
+
+        <dt>Business/Organization Name</dt>
+        <dd id="businessName">Loading...</dd>
+
+        <dt>Submission Time</dt>
+        <dd id="timestamp">Loading...</dd>
+      </dl>
+    </section>
+
+    <a href="join.html" class="home-link">Submit Another Application</a>
+  </main>
+
+  <script>
+    // Utility to decode URL params
+    function getQueryParams() {
+      const params = {};
+      const queryString = window.location.search.substring(1);
+      const pairs = queryString.split('&');
+      for (const pair of pairs) {
+        if (!pair) continue;
+        const [key, value] = pair.split('=');
+        params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+      }
+      return params;
+    }
+
+    // Populate the page with submitted form data
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = getQueryParams();
+
+      // Fill fields or show 'Not provided'
+      document.getElementById('firstName').textContent = params.firstName || 'Not provided';
+      document.getElementById('lastName').textContent = params.lastName || 'Not provided';
+      document.getElementById('email').textContent = params.email || 'Not provided';
+      document.getElementById('phone').textContent = params.phone || 'Not provided';
+      document.getElementById('businessName').textContent = params.businessName || 'Not provided';
+
+      // Format timestamp nicely or fallback text
+      if (params.timestamp) {
+        const date = new Date(params.timestamp);
+        if (!isNaN(date)) {
+          document.getElementById('timestamp').textContent = date.toLocaleString();
+        } else {
+          document.getElementById('timestamp').textContent = params.timestamp;
+        }
+      } else {
+        document.getElementById('timestamp').textContent = 'Not provided';
+      }
+    });
+  </script>
+</body>
+</html>
