@@ -1,171 +1,283 @@
-/* Directory Page Styles */
-main {
-    padding: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
+/* ===== DIRECTORY PAGE ENHANCEMENTS ===== */
+.directory-main {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* View Toggle */
+/* View Toggle Controls */
+.view-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .view-toggle {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .view-toggle button {
-    background: none;
-    border: 1px solid var(--primary-color);
-    border-radius: 4px;
-    padding: 0.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  background: none;
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .view-toggle button:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }
 
 .view-toggle button.active {
-    background-color: var(--primary-color);
-    color: white;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .view-toggle button svg {
-    fill: currentColor;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
-/* Grid View */
+/* Filter Controls */
+.filter-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-controls select {
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--primary-color);
+  background-color: white;
+  min-width: 150px;
+}
+
+/* Member Cards Container */
+.member-container {
+  transition: all 0.3s ease;
+}
+
+/* Grid View Styles */
 .grid-view {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
-/* Member Card */
+/* List View Styles */
+.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.list-view .member-card {
+  display: flex;
+  flex-direction: row;
+  max-height: 150px;
+}
+
+/* Member Card Styles */
 .member-card {
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    overflow: hidden;
-    transition: transform 0.3s ease;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .member-card:hover,
 .member-card:focus-within {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Member Image */
+/* Member Image Section */
 .member-image {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
+  position: relative;
+  height: 200px;
+  overflow: hidden;
 }
 
 .member-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.member-card:hover .member-image img {
+  transform: scale(1.05);
 }
 
 /* Membership Badge */
 .membership-badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 1rem;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: white;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.membership-badge.member {
-    background-color: var(--primary-color);
+.membership-badge.np-member {
+  background-color: var(--primary-color);
+}
+
+.membership-badge.bronze-member {
+  background-color: #cd7f32;
 }
 
 .membership-badge.silver-member {
-    background-color: #c0c0c0;
-    color: var(--dark-color);
+  background-color: #c0c0c0;
+  color: var(--dark-color);
 }
 
 .membership-badge.gold-member {
-    background-color: #ffd700;
-    color: var(--dark-color);
+  background-color: #ffd700;
+  color: var(--dark-color);
 }
 
-/* Member Info */
+/* Member Info Section */
 .member-info {
-    padding: 1rem;
+  padding: 1.25rem;
 }
 
 .member-info h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.member-info p {
+  margin: 0.25rem 0;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.member-industry {
+  display: inline-block;
+  background-color: var(--light-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.member-contact {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .member-website {
-    display: inline-block;
-    margin-top: 0.5rem;
-    color: var(--secondary-color);
-    text-decoration: none;
-    font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .member-website:hover,
 .member-website:focus {
-    text-decoration: underline;
-    outline: none;
+  color: var(--primary-color);
+  outline: none;
 }
 
-/* List View */
-.list-view {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.member-website svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
-.list-view .member-card {
-    display: flex;
-    flex-direction: row;
-    max-height: 150px;
-    transition: flex-direction 0.3s ease;
-}
-
+/* List View Specific Styles */
 .list-view .member-image {
-    width: 200px;
-    height: auto;
+  width: 200px;
+  height: 150px;
+  flex-shrink: 0;
 }
 
 .list-view .member-info {
-    flex: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .grid-view {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-    
-    .list-view .member-card {
-        flex-direction: column;
-        max-height: none;
-    }
-    
-    .list-view .member-image {
-        width: 100%;
-        height: 150px;
-    }
+  .grid-view {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .list-view .member-card {
+    flex-direction: column;
+    max-height: none;
+  }
+  
+  .list-view .member-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .view-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 @media (max-width: 480px) {
-    .grid-view {
-        grid-template-columns: 1fr;
-    }
-    
-    .view-toggle {
-        justify-content: center;
-    }
+  .grid-view {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-controls {
+    flex-direction: column;
+  }
+
+  .filter-controls select {
+    width: 100%;
+  }
 }
+
+/* Animation for Member Cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.member-card {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+.member-card:nth-child(1) { animation-delay: 0.1s; }
+.member-card:nth-child(2) { animation-delay: 0.2s; }
+.member-card:nth-child(3) { animation-delay: 0.3s; }
+.member-card:nth-child(4) { animation-delay: 0.4s; }
+.member-card:nth-child(5) { animation-delay: 0.5s; }
