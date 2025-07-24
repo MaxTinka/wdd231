@@ -1,123 +1,244 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Set current year and last modified date
-  document.getElementById('current-year').textContent = new Date().getFullYear();
-  document.getElementById('lastModified').textContent = document.lastModified;
-  
-  // Set form timestamp
-  const now = new Date();
-  document.getElementById('timestamp').value = now.toISOString();
-  
-  // Mobile menu toggle
-  const menuButton = document.getElementById('menu-button');
-  const primaryNav = document.getElementById('primary-nav');
-  
-  menuButton.addEventListener('click', function() {
-    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !isExpanded);
-    primaryNav.classList.toggle('active');
-  });
-  
-  // Form validation
-  const form = document.getElementById('joinForm');
-  const requiredFields = form.querySelectorAll('[required]');
-  
-  // Add real-time validation
-  requiredFields.forEach(field => {
-    field.addEventListener('input', function() {
-      validateField(this);
-    });
-    
-    // Validate on blur
-    field.addEventListener('blur', function() {
-      validateField(this);
-    });
-  });
-  
-  // Form submission
-  form.addEventListener('submit', function(e) {
-    let isValid = true;
-    
-    // Validate all required fields
-    requiredFields.forEach(field => {
-      if (!validateField(field)) {
-        isValid = false;
-      }
-    });
-    
-    if (!isValid) {
-      e.preventDefault();
-      // Focus on first invalid field
-      const firstInvalid = form.querySelector(':invalid');
-      if (firstInvalid) {
-        firstInvalid.focus();
-      }
-    }
-  });
-  
-  // Reset form button
-  const resetButton = form.querySelector('button[type="reset"]');
-  resetButton.addEventListener('click', function() {
-    // Clear error messages
-    form.querySelectorAll('.error-message').forEach(el => {
-      el.textContent = '';
-    });
-    
-    // Reset visual validation states
-    form.querySelectorAll('input, textarea').forEach(field => {
-      field.classList.remove('invalid');
-    });
-  });
-  
-  // Helper function to validate a field
-  function validateField(field) {
-    const errorElement = field.closest('.form-field').querySelector('.error-message');
-    
-    if (field.validity.valid) {
-      errorElement.textContent = '';
-      field.classList.remove('invalid');
-      return true;
-    } else {
-      showError(field, errorElement);
-      field.classList.add('invalid');
-      return false;
-    }
+/* Base Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fefefe;
+  color: #333;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Form Styles */
+.join-form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.form-field {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.field-label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  padding: 0.6rem 0.8rem;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+  border-color: #3498db;
+  outline: none;
+  background-color: #f0f8ff;
+}
+
+/* Error message */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 0.2rem;
+  min-height: 1.2em;
+}
+
+/* Invalid input */
+input.invalid,
+textarea.invalid {
+  border-color: #e74c3c;
+  background-color: #ffe6e6;
+}
+
+/* Shake animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.shake {
+  animation: shake 0.3s ease;
+}
+
+/* Membership cards */
+.membership-option {
+  display: inline-block;
+  margin: 0.5rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline-offset: 2px;
+  padding: 0;
+}
+
+.membership-option[aria-checked="true"],
+.membership-option:hover,
+.membership-option:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+  outline: none;
+}
+
+.membership-card {
+  padding: 1rem 1.2rem;
+  background-color: #f7f9fc;
+  border-radius: 6px;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.membership-option[aria-checked="true"] .membership-card {
+  background-color: #dceefd;
+}
+
+/* Buttons */
+.button {
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.primary-button {
+  background-color: #3498db;
+  color: white;
+}
+
+.primary-button:hover,
+.primary-button:focus {
+  background-color: #217dbb;
+  outline: none;
+}
+
+.secondary-button {
+  background-color: #ccc;
+  color: #333;
+  margin-left: 1rem;
+}
+
+.secondary-button:hover,
+.secondary-button:focus {
+  background-color: #aaa;
+  outline: none;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+body.dark-mode a {
+  color: #66aaff;
+}
+
+body.dark-mode .join-form {
+  background-color: #1e1e1e;
+  color: #eee;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="tel"],
+body.dark-mode textarea {
+  background-color: #2b2b2b;
+  border-color: #555;
+  color: #eee;
+}
+
+body.dark-mode input[type="text"]:focus,
+body.dark-mode input[type="email"]:focus,
+body.dark-mode input[type="tel"]:focus,
+body.dark-mode textarea:focus {
+  background-color: #3a5fcd;
+  border-color: #66aaff;
+  color: #fff;
+}
+
+body.dark-mode input.invalid,
+body.dark-mode textarea.invalid {
+  border-color: #e74c3c;
+  background-color: #4b1a1a;
+  color: #f8d7da;
+}
+
+body.dark-mode .membership-card {
+  background-color: #2b2b2b;
+}
+
+body.dark-mode .membership-option[aria-checked="true"] .membership-card {
+  background-color: #3a5fcd;
+  color: #fff;
+}
+
+body.dark-mode .button.primary-button {
+  background-color: #3a5fcd;
+}
+
+body.dark-mode .button.primary-button:hover,
+body.dark-mode .button.primary-button:focus {
+  background-color: #244a9e;
+}
+
+body.dark-mode .button.secondary-button {
+  background-color: #555;
+  color: #ddd;
+}
+
+body.dark-mode .button.secondary-button:hover,
+body.dark-mode .button.secondary-button:focus {
+  background-color: #444;
+}
+
+/* Focus styles */
+input:focus,
+textarea:focus,
+button:focus,
+.membership-option:focus {
+  outline: 3px solid #3498db;
+  outline-offset: 2px;
+}
+
+/* Responsive grid for form */
+@media (min-width: 600px) {
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
   }
-  
-  // Helper function to show appropriate error message
-  function showError(field, errorElement) {
-    if (field.validity.valueMissing) {
-      errorElement.textContent = 'This field is required';
-    } else if (field.validity.typeMismatch) {
-      errorElement.textContent = 'Please enter a valid ' + field.type;
-    } else if (field.validity.patternMismatch) {
-      if (field.name === 'title') {
-        errorElement.textContent = 'Minimum 7 letters, spaces, or hyphens';
-      } else if (field.name === 'phone') {
-        errorElement.textContent = 'Please enter a valid phone number';
-      }
-    } else if (field.validity.tooShort) {
-      errorElement.textContent = `Minimum length is ${field.minLength} characters`;
-    }
+
+  .wide-field {
+    grid-column: span 2;
   }
-  
-  // Enhance membership card selection
-  const membershipOptions = document.querySelectorAll('.membership-option');
-  
-  membershipOptions.forEach(option => {
-    option.addEventListener('click', function() {
-      // Update aria attributes for accessibility
-      membershipOptions.forEach(opt => {
-        opt.setAttribute('aria-checked', 'false');
-      });
-      this.setAttribute('aria-checked', 'true');
-    });
-    
-    // Keyboard navigation
-    option.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        this.click();
-      }
-    });
-  });
-});
+}
