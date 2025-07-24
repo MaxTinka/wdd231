@@ -15,9 +15,9 @@
   <link rel="stylesheet" href="styles/base.css" />
   <link rel="stylesheet" href="styles/large.css" media="(min-width: 768px)" />
   <link rel="stylesheet" href="styles/join.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to Main Content</a>
@@ -60,28 +60,48 @@
           <div class="form-grid">
             <label class="form-field">
               <span class="field-label">First Name*</span>
-              <input type="text" name="firstName" required autocomplete="given-name" title="Enter your first name">
+              <input type="text" name="firstName" required autocomplete="given-name" title="Enter your first name" />
               <span class="error-message" aria-live="polite"></span>
             </label>
             <label class="form-field">
               <span class="field-label">Last Name*</span>
-              <input type="text" name="lastName" required autocomplete="family-name" title="Enter your last name">
+              <input type="text" name="lastName" required autocomplete="family-name" title="Enter your last name" />
               <span class="error-message" aria-live="polite"></span>
             </label>
             <label class="form-field">
               <span class="field-label">Title/Role</span>
-              <input type="text" name="title" autocomplete="organization-title" pattern="[a-zA-Z\- ]{7,}" title="Your organizational title (minimum 7 characters)">
+              <input
+                type="text"
+                name="title"
+                autocomplete="organization-title"
+                pattern="[a-zA-Z\- ]{7,}"
+                title="Your organizational title (minimum 7 characters)"
+              />
               <span class="hint">Minimum 7 characters (letters, spaces, hyphens only)</span>
               <span class="error-message" aria-live="polite"></span>
             </label>
             <label class="form-field">
               <span class="field-label">Email*</span>
-              <input type="email" name="email" required autocomplete="email" placeholder="example@domain.com" title="Enter a valid email address">
+              <input
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="example@domain.com"
+                title="Enter a valid email address"
+              />
               <span class="error-message" aria-live="polite"></span>
             </label>
             <label class="form-field">
               <span class="field-label">Mobile Phone*</span>
-              <input type="tel" name="phone" required autocomplete="tel" pattern="[0-9]{10,15}" title="Enter your mobile phone number (digits only)">
+              <input
+                type="tel"
+                name="phone"
+                required
+                autocomplete="tel"
+                pattern="[0-9]{10,15}"
+                title="Enter your mobile phone number (digits only)"
+              />
               <span class="error-message" aria-live="polite"></span>
             </label>
           </div>
@@ -92,7 +112,13 @@
           <div class="form-grid">
             <label class="form-field">
               <span class="field-label">Business/Organization Name*</span>
-              <input type="text" name="businessName" required autocomplete="organization" title="Enter your business name">
+              <input
+                type="text"
+                name="businessName"
+                required
+                autocomplete="organization"
+                title="Enter your business name"
+              />
               <span class="error-message" aria-live="polite"></span>
             </label>
             <label class="form-field wide-field">
@@ -105,14 +131,70 @@
         <fieldset class="membership-levels">
           <legend><span class="legend-number">3</span> Membership Level</legend>
           <div class="membership-options">
-            <!-- Repeatable radio cards -->
-            <!-- You already have these set up well -->
-            <!-- No change needed here -->
-            [Membership cards unchanged for brevity]
+            <article class="membership-card" tabindex="0">
+              <input
+                type="radio"
+                id="npMembership"
+                name="membershipLevel"
+                value="NP Membership"
+                checked
+                hidden
+              />
+              <label for="npMembership" class="card-label">
+                <h3>NP Membership</h3>
+                <p>For non-profit organizations — No fee</p>
+                <a href="#" class="open-modal" data-modal="npModal" aria-haspopup="dialog">Learn More</a>
+              </label>
+            </article>
+
+            <article class="membership-card" tabindex="0">
+              <input
+                type="radio"
+                id="bronzeMembership"
+                name="membershipLevel"
+                value="Bronze Membership"
+                hidden
+              />
+              <label for="bronzeMembership" class="card-label">
+                <h3>Bronze Membership</h3>
+                <p>Includes event discounts and webinars — $250/year</p>
+                <a href="#" class="open-modal" data-modal="bronzeModal" aria-haspopup="dialog">Learn More</a>
+              </label>
+            </article>
+
+            <article class="membership-card" tabindex="0">
+              <input
+                type="radio"
+                id="silverMembership"
+                name="membershipLevel"
+                value="Silver Membership"
+                hidden
+              />
+              <label for="silverMembership" class="card-label">
+                <h3>Silver Membership</h3>
+                <p>Priority training and bigger discounts — $500/year</p>
+                <a href="#" class="open-modal" data-modal="silverModal" aria-haspopup="dialog">Learn More</a>
+              </label>
+            </article>
+
+            <article class="membership-card" tabindex="0">
+              <input
+                type="radio"
+                id="goldMembership"
+                name="membershipLevel"
+                value="Gold Membership"
+                hidden
+              />
+              <label for="goldMembership" class="card-label">
+                <h3>Gold Membership</h3>
+                <p>Spotlight, consultant, max benefits — $1000/year</p>
+                <a href="#" class="open-modal" data-modal="goldModal" aria-haspopup="dialog">Learn More</a>
+              </label>
+            </article>
           </div>
         </fieldset>
 
-        <input type="hidden" id="timestamp" name="timestamp">
+        <input type="hidden" id="timestamp" name="timestamp" />
 
         <div class="form-actions">
           <button type="submit" class="button primary-button">Submit Application</button>
@@ -137,7 +219,7 @@
         <h3 class="sr-only">Social Media</h3>
         <div class="social-links">
           <!-- Social media icons (can link actual URLs later) -->
-          [Social links unchanged for brevity]
+          <!-- Add your social icons here -->
         </div>
       </div>
       <div class="footer-section development-info">
@@ -148,15 +230,114 @@
     </div>
   </footer>
 
+  <!-- Modals for Membership Benefits -->
+  <div id="npModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="npModalTitle" tabindex="-1" hidden>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="npModalTitle">NP Membership Benefits</h2>
+      <ul>
+        <li>Free listing in directory</li>
+        <li>Member newsletter</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="bronzeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="bronzeModalTitle" tabindex="-1" hidden>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="bronzeModalTitle">Bronze Membership Benefits</h2>
+      <ul>
+        <li>All NP benefits</li>
+        <li>10% event discounts</li>
+        <li>Training webinars</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="silverModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="silverModalTitle" tabindex="-1" hidden>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="silverModalTitle">Silver Membership Benefits</h2>
+      <ul>
+        <li>All Bronze benefits</li>
+        <li>20% event discounts</li>
+        <li>Priority training access</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="goldModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="goldModalTitle" tabindex="-1" hidden>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="goldModalTitle">Gold Membership Benefits</h2>
+      <ul>
+        <li>All Silver benefits</li>
+        <li>30% event discounts</li>
+        <li>Homepage spotlight</li>
+        <li>Dedicated consultant</li>
+      </ul>
+    </div>
+  </div>
+
   <script>
     // Auto-fill year and last modified
     document.getElementById("current-year").textContent = new Date().getFullYear();
     document.getElementById("lastModified").textContent = document.lastModified;
 
-    // Set timestamp on form submission
-    document.getElementById("joinForm").addEventListener("submit", () => {
-      document.getElementById("timestamp").value = new Date().toISOString();
+    // Set timestamp on form load
+    document.getElementById("timestamp").value = new Date().toISOString();
+
+    // Mobile menu toggle
+    const menuButton = document.getElementById('menu-button');
+    const primaryNav = document.getElementById('primary-nav');
+    menuButton.addEventListener('click', () => {
+      const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!expanded));
+      primaryNav.classList.toggle('active');
     });
+
+    // Modal open/close logic
+    const openModalLinks = document.querySelectorAll('.open-modal');
+    const modals = document.querySelectorAll('.modal');
+
+    openModalLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const modalId = link.dataset.modal;
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.hidden = false;
+          modal.querySelector('.modal-close').focus();
+        }
+      });
+    });
+
+    modals.forEach(modal => {
+      const closeBtn = modal.querySelector('.modal-close');
+
+      // Close on button click
+      closeBtn.addEventListener('click', () => {
+        modal.hidden = true;
+      });
+
+      // Close on Escape key
+      modal.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          modal.hidden = true;
+          const openLink = document.querySelector(`.open-modal[data-modal="${modal.id}"]`);
+          if (openLink) openLink.focus();
+        }
+      });
+
+      // Close on click outside modal-content
+      modal.addEventListener('click', e => {
+        if (e.target === modal) {
+          modal.hidden = true;
+        }
+      });
+    });
+
+    // Form validation could be enhanced here (add your previous JS validation if needed)
   </script>
 </body>
 </html>
