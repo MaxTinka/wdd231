@@ -11,10 +11,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
+    /* Container */
     main {
       max-width: 700px;
-      margin: 2rem auto;
-      padding: 1rem;
+      margin: 3rem auto;
+      padding: 2rem;
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
@@ -23,62 +24,70 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
+    /* Headings */
     h1 {
-      text-align: center;
-      margin-bottom: 1rem;
       font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
     }
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.5;
+    h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 0.3rem;
     }
 
+    /* Definition list for labels + values */
     dl {
-      margin-top: 1.5rem;
       border-top: 1px solid #ccc;
       padding-top: 1rem;
     }
 
     dt {
-      font-weight: 700;
-      margin-top: 0.75rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      color: #2c3e50;
     }
 
     dd {
       margin-left: 1rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       color: #555;
-      word-wrap: break-word;
+      word-break: break-word;
     }
 
-    a.home-link {
+    /* Button back to form */
+    .btn-back {
       display: inline-block;
-      margin-top: 2rem;
-      text-align: center;
+      margin: 2rem auto 0 auto;
+      padding: 0.75rem 1.5rem;
       background-color: #3498db;
-      color: white;
-      padding: 0.6rem 1.2rem;
+      color: #fff;
+      font-weight: 600;
+      border: none;
       border-radius: 5px;
       text-decoration: none;
-      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
       transition: background-color 0.3s ease;
+      user-select: none;
     }
 
-    a.home-link:hover,
-    a.home-link:focus {
+    .btn-back:hover,
+    .btn-back:focus {
       background-color: #217dbb;
       outline: none;
     }
   </style>
 </head>
 <body>
-  <main role="main" aria-labelledby="thankyou-heading">
-    <h1 id="thankyou-heading">Thank You for Joining the Local Chamber!</h1>
-    <p>Your application has been successfully submitted. We appreciate your interest in becoming a member of our community.</p>
+  <main role="main" aria-labelledby="thankyou-title">
+    <h1 id="thankyou-title">Thank You for Joining the Local Chamber of Commerce!</h1>
+    <p>We appreciate your application. Here is the information you submitted:</p>
 
     <section aria-label="Submitted Information">
-      <h2>Here is the information you submitted:</h2>
       <dl>
         <dt>First Name</dt>
         <dd id="firstName">Loading...</dd>
@@ -89,25 +98,25 @@
         <dt>Email Address</dt>
         <dd id="email">Loading...</dd>
 
-        <dt>Mobile Phone</dt>
+        <dt>Mobile Phone Number</dt>
         <dd id="phone">Loading...</dd>
 
         <dt>Business/Organization Name</dt>
         <dd id="businessName">Loading...</dd>
 
-        <dt>Submission Time</dt>
+        <dt>Submission Date and Time</dt>
         <dd id="timestamp">Loading...</dd>
       </dl>
     </section>
 
-    <a href="join.html" class="home-link">Submit Another Application</a>
+    <a href="join.html" class="btn-back">Submit Another Application</a>
   </main>
 
   <script>
-    // Utility to decode URL params
+    // Parse URL query parameters into an object
     function getQueryParams() {
       const params = {};
-      const queryString = window.location.search.substring(1);
+      const queryString = window.location.search.slice(1);
       const pairs = queryString.split('&');
       for (const pair of pairs) {
         if (!pair) continue;
@@ -117,25 +126,19 @@
       return params;
     }
 
-    // Populate the page with submitted form data
+    // Populate fields with submitted data or fallback text
     document.addEventListener('DOMContentLoaded', () => {
       const params = getQueryParams();
 
-      // Fill fields or show 'Not provided'
       document.getElementById('firstName').textContent = params.firstName || 'Not provided';
       document.getElementById('lastName').textContent = params.lastName || 'Not provided';
       document.getElementById('email').textContent = params.email || 'Not provided';
       document.getElementById('phone').textContent = params.phone || 'Not provided';
       document.getElementById('businessName').textContent = params.businessName || 'Not provided';
 
-      // Format timestamp nicely or fallback text
       if (params.timestamp) {
-        const date = new Date(params.timestamp);
-        if (!isNaN(date)) {
-          document.getElementById('timestamp').textContent = date.toLocaleString();
-        } else {
-          document.getElementById('timestamp').textContent = params.timestamp;
-        }
+        const dt = new Date(params.timestamp);
+        document.getElementById('timestamp').textContent = isNaN(dt) ? params.timestamp : dt.toLocaleString();
       } else {
         document.getElementById('timestamp').textContent = 'Not provided';
       }
