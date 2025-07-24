@@ -111,7 +111,16 @@ textarea.invalid {
   background-color: #f7f9fc;
   border-radius: 6px;
   user-select: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Animate membership cards on page load */
+.membership-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: var(--animation-delay, 0s);
 }
 
 .membership-option[aria-checked="true"] .membership-card {
