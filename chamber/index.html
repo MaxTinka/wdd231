@@ -34,10 +34,10 @@
     <nav id="primary-nav" aria-label="Primary navigation">
       <ul>
         <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="#">Discover</a></li>
+        <li><a href="discover.html">Discover</a></li>
         <li><a href="directory.html">Directory</a></li>
         <li><a href="join.html">Join</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -110,11 +110,11 @@
       primaryNav.classList.toggle('active');
     });
 
-    // Update current year and last modified date in footer
+    // Update current year and last modified date
     document.getElementById('current-year').textContent = new Date().getFullYear();
     document.getElementById('lastModified').textContent = document.lastModified;
 
-    // Sample upcoming events
+    // Sample events
     const events = [
       {
         title: 'Annual Business Expo',
@@ -139,7 +139,6 @@
     }
 
     const eventContainer = document.querySelector('.event-cards');
-
     events.forEach((event) => {
       const card = document.createElement('article');
       card.className = 'event-card';
@@ -151,10 +150,10 @@
       eventContainer.appendChild(card);
     });
 
-    // OpenWeatherMap API
+    // Weather
     const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
-    const lat = 0.05; // Entebbe approx latitude
-    const lon = 32.46; // Entebbe approx longitude
+    const lat = 0.05;
+    const lon = 32.46;
     const weatherContainer = document.querySelector('.weather-card');
 
     async function fetchWeather() {
@@ -164,7 +163,6 @@
         );
         if (!response.ok) throw new Error('Weather data not available');
         const data = await response.json();
-
         const current = data.current;
         const daily = data.daily;
 
