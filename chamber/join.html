@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Join the Local Chamber of Commerce - Membership Application" />
   <meta name="author" content="Your Name" />
   <meta property="og:title" content="Join the Local Chamber of Commerce" />
@@ -11,36 +11,26 @@
   <meta property="og:url" content="https://yourdomain.com/chamber/join.html" />
   <title>Join | Local Chamber of Commerce</title>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="styles/normalize.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="styles/base.css" />
   <link rel="stylesheet" href="styles/large.css" media="(min-width: 768px)" />
   <link rel="stylesheet" href="styles/join.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to Main Content</a>
-  <header>
+  <header class="main-header">
     <div class="header-container">
       <div class="logo">
         <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
           <circle cx="30" cy="30" r="25" fill="#2c3e50" />
-          <text
-            x="30"
-            y="38"
-            font-family="Roboto"
-            font-size="20"
-            fill="white"
-            text-anchor="middle"
-            >CC</text
-          >
+          <text x="30" y="38" font-family="Roboto" font-size="20" fill="white" text-anchor="middle">CC</text>
         </svg>
         <span class="name">Local Chamber</span>
       </div>
-      <button
-        id="menu-button"
-        aria-expanded="false"
-        aria-label="Navigation menu"
-        aria-controls="primary-nav"
-      >
+      <button id="menu-button" aria-expanded="false" aria-label="Navigation menu" aria-controls="primary-nav">
         <span class="hamburger-icon">☰</span>
         <span class="sr-only">Menu</span>
       </button>
@@ -57,140 +47,173 @@
   </header>
 
   <main id="main-content" class="join-main">
-    <h1>Become a Member</h1>
+    <div class="page-header">
+      <h1>Become a Member</h1>
+      <p class="subtitle">Join our network of local businesses and organizations</p>
+    </div>
     
     <div class="join-container">
-      <form id="joinForm" method="get" action="thankyou.html" class="join-form">
+      <form id="joinForm" method="get" action="thankyou.html" class="join-form" novalidate>
         <fieldset>
-          <legend>Applicant Information</legend>
+          <legend><span class="legend-number">1</span> Applicant Information</legend>
           
-          <label>
-            First Name*
-            <input type="text" name="firstName" required autocomplete="given-name" title="Enter your first name">
-          </label>
-          
-          <label>
-            Last Name*
-            <input type="text" name="lastName" required autocomplete="family-name" title="Enter your last name">
-          </label>
-          
-          <label>
-            Title/Role
-            <input type="text" name="title" autocomplete="organization-title" 
-                   pattern="[a-zA-Z\- ]{7,}" title="Your organizational title (minimum 7 characters)">
-          </label>
-          
-          <label>
-            Email*
-            <input type="email" name="email" required autocomplete="email" 
-                   placeholder="example@domain.com" title="Enter a valid email address">
-          </label>
-          
-          <label>
-            Mobile Phone*
-            <input type="tel" name="phone" required autocomplete="tel" title="Enter your mobile phone number">
-          </label>
+          <div class="form-grid">
+            <label class="form-field">
+              <span class="field-label">First Name*</span>
+              <input type="text" name="firstName" required autocomplete="given-name" title="Enter your first name">
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+            
+            <label class="form-field">
+              <span class="field-label">Last Name*</span>
+              <input type="text" name="lastName" required autocomplete="family-name" title="Enter your last name">
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+            
+            <label class="form-field">
+              <span class="field-label">Title/Role</span>
+              <input type="text" name="title" autocomplete="organization-title" 
+                     pattern="[a-zA-Z\- ]{7,}" title="Your organizational title (minimum 7 characters)">
+              <span class="hint">Minimum 7 characters (letters, spaces, hyphens only)</span>
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+            
+            <label class="form-field">
+              <span class="field-label">Email*</span>
+              <input type="email" name="email" required autocomplete="email" 
+                     placeholder="example@domain.com" title="Enter a valid email address">
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+            
+            <label class="form-field">
+              <span class="field-label">Mobile Phone*</span>
+              <input type="tel" name="phone" required autocomplete="tel" 
+                     pattern="[0-9]{10,15}" title="Enter your mobile phone number (digits only)">
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+          </div>
         </fieldset>
         
         <fieldset>
-          <legend>Business Information</legend>
+          <legend><span class="legend-number">2</span> Business Information</legend>
           
-          <label>
-            Business/Organization Name*
-            <input type="text" name="businessName" required autocomplete="organization" title="Enter your business name">
-          </label>
-          
-          <label>
-            Business Description
-            <textarea name="businessDescription" title="Describe your business"></textarea>
-          </label>
+          <div class="form-grid">
+            <label class="form-field">
+              <span class="field-label">Business/Organization Name*</span>
+              <input type="text" name="businessName" required autocomplete="organization" title="Enter your business name">
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+            
+            <label class="form-field wide-field">
+              <span class="field-label">Business Description</span>
+              <textarea name="businessDescription" title="Describe your business"></textarea>
+            </label>
+          </div>
         </fieldset>
         
         <fieldset class="membership-levels">
-          <legend>Membership Level</legend>
+          <legend><span class="legend-number">3</span> Membership Level</legend>
           
-          <label class="membership-option">
-            <input type="radio" name="membershipLevel" value="NP Membership" checked>
-            <div class="membership-card">
-              <h3>NP Membership</h3>
-              <p>For non-profit organizations</p>
-              <p class="price">No fee</p>
-            </div>
-          </label>
-          
-          <label class="membership-option">
-            <input type="radio" name="membershipLevel" value="Bronze Membership">
-            <div class="membership-card">
-              <h3>Bronze Membership</h3>
-              <p>Basic level benefits</p>
-              <p class="price">$250/year</p>
-            </div>
-          </label>
-          
-          <label class="membership-option">
-            <input type="radio" name="membershipLevel" value="Silver Membership">
-            <div class="membership-card">
-              <h3>Silver Membership</h3>
-              <p>Enhanced benefits</p>
-              <p class="price">$500/year</p>
-            </div>
-          </label>
-          
-          <label class="membership-option">
-            <input type="radio" name="membershipLevel" value="Gold Membership">
-            <div class="membership-card">
-              <h3>Gold Membership</h3>
-              <p>Premium benefits</p>
-              <p class="price">$1000/year</p>
-            </div>
-          </label>
+          <div class="membership-options">
+            <label class="membership-option">
+              <input type="radio" name="membershipLevel" value="NP Membership" checked>
+              <div class="membership-card">
+                <h3>NP Membership</h3>
+                <ul class="benefits">
+                  <li>For non-profit organizations</li>
+                  <li>Free listing in directory</li>
+                  <li>Member newsletter</li>
+                </ul>
+                <p class="price">No fee</p>
+              </div>
+            </label>
+            
+            <label class="membership-option">
+              <input type="radio" name="membershipLevel" value="Bronze Membership">
+              <div class="membership-card">
+                <h3>Bronze Membership</h3>
+                <ul class="benefits">
+                  <li>All NP benefits</li>
+                  <li>10% event discounts</li>
+                  <li>Training webinars</li>
+                </ul>
+                <p class="price">$250/year</p>
+              </div>
+            </label>
+            
+            <label class="membership-option">
+              <input type="radio" name="membershipLevel" value="Silver Membership">
+              <div class="membership-card">
+                <h3>Silver Membership</h3>
+                <ul class="benefits">
+                  <li>All Bronze benefits</li>
+                  <li>20% event discounts</li>
+                  <li>Priority training access</li>
+                </ul>
+                <p class="price">$500/year</p>
+              </div>
+            </label>
+            
+            <label class="membership-option">
+              <input type="radio" name="membershipLevel" value="Gold Membership">
+              <div class="membership-card">
+                <h3>Gold Membership</h3>
+                <ul class="benefits">
+                  <li>All Silver benefits</li>
+                  <li>30% event discounts</li>
+                  <li>Homepage spotlight</li>
+                  <li>Dedicated consultant</li>
+                </ul>
+                <p class="price">$1000/year</p>
+              </div>
+            </label>
+          </div>
         </fieldset>
         
         <input type="hidden" id="timestamp" name="timestamp">
         
-        <button type="submit" class="button">Submit Application</button>
+        <div class="form-actions">
+          <button type="submit" class="button primary-button">Submit Application</button>
+          <button type="reset" class="button secondary-button">Reset Form</button>
+        </div>
       </form>
     </div>
   </main>
 
-  <footer>
+  <footer class="main-footer">
     <div class="footer-content">
-      <div class="contact-info">
+      <div class="footer-section contact-info">
         <h3>Contact Us</h3>
-        <p>123 Commerce Street</p>
-        <p>Entebbe City</p>
-        <p>Phone: (256) 770826951</p>
-        <p>Email: info@localchamber.org</p>
+        <address>
+          <p>123 Commerce Street</p>
+          <p>Entebbe City</p>
+          <p>Phone: <a href="tel:+256770826951">(256) 770826951</a></p>
+          <p>Email: <a href="mailto:info@localchamber.org">info@localchamber.org</a></p>
+        </address>
       </div>
-      <div class="social-media">
-        <a href="#" aria-label="Facebook">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-            />
-          </svg>
-        </a>
-        <a href="#" aria-label="LinkedIn">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-            />
-          </svg>
-        </a>
+      
+      <div class="footer-section social-media">
+        <h3 class="sr-only">Social Media</h3>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook" class="social-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="social-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter" class="social-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.054 10.054 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+          </a>
+        </div>
       </div>
-      <div class="development-info">
+      
+      <div class="footer-section development-info">
         <p>&copy; <span id="current-year"></span> Local Chamber of Commerce</p>
         <p>Max Tinka | WDD 231 Project</p>
         <p>Last Modified: <span id="lastModified"></span></p>
@@ -198,36 +221,6 @@
     </div>
   </footer>
 
-  <script>
-    // Set timestamp when form loads
-    document.addEventListener('DOMContentLoaded', function() {
-      const now = new Date();
-      const timestampField = document.getElementById('timestamp');
-      timestampField.value = now.toLocaleString();
-      
-      // Update current year and last modified date in footer
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-      document.getElementById('lastModified').textContent = document.lastModified;
-      
-      // Toggle mobile menu
-      const menuButton = document.getElementById('menu-button');
-      const primaryNav = document.getElementById('primary-nav');
-
-      menuButton.addEventListener('click', () => {
-        const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
-        menuButton.setAttribute('aria-expanded', !expanded);
-        primaryNav.classList.toggle('active');
-      });
-
-      // Membership card selection
-      const membershipOptions = document.querySelectorAll('.membership-option');
-      membershipOptions.forEach(option => {
-        option.addEventListener('click', function() {
-          membershipOptions.forEach(opt => opt.classList.remove('selected'));
-          this.classList.add('selected');
-        });
-      });
-    });
-  </script>
+  <script src="scripts/join.js"></script>
 </body>
 </html>
