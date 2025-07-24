@@ -1,167 +1,123 @@
-/* Join Page Styles */
-.join-main {
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.join-container {
-  display: grid;
-  gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  .join-container {
-    grid-template-columns: 1fr;
+document.addEventListener('DOMContentLoaded', function() {
+  // Set current year and last modified date
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+  document.getElementById('lastModified').textContent = document.lastModified;
+  
+  // Set form timestamp
+  const now = new Date();
+  document.getElementById('timestamp').value = now.toISOString();
+  
+  // Mobile menu toggle
+  const menuButton = document.getElementById('menu-button');
+  const primaryNav = document.getElementById('primary-nav');
+  
+  menuButton.addEventListener('click', function() {
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !isExpanded);
+    primaryNav.classList.toggle('active');
+  });
+  
+  // Form validation
+  const form = document.getElementById('joinForm');
+  const requiredFields = form.querySelectorAll('[required]');
+  
+  // Add real-time validation
+  requiredFields.forEach(field => {
+    field.addEventListener('input', function() {
+      validateField(this);
+    });
+    
+    // Validate on blur
+    field.addEventListener('blur', function() {
+      validateField(this);
+    });
+  });
+  
+  // Form submission
+  form.addEventListener('submit', function(e) {
+    let isValid = true;
+    
+    // Validate all required fields
+    requiredFields.forEach(field => {
+      if (!validateField(field)) {
+        isValid = false;
+      }
+    });
+    
+    if (!isValid) {
+      e.preventDefault();
+      // Focus on first invalid field
+      const firstInvalid = form.querySelector(':invalid');
+      if (firstInvalid) {
+        firstInvalid.focus();
+      }
+    }
+  });
+  
+  // Reset form button
+  const resetButton = form.querySelector('button[type="reset"]');
+  resetButton.addEventListener('click', function() {
+    // Clear error messages
+    form.querySelectorAll('.error-message').forEach(el => {
+      el.textContent = '';
+    });
+    
+    // Reset visual validation states
+    form.querySelectorAll('input, textarea').forEach(field => {
+      field.classList.remove('invalid');
+    });
+  });
+  
+  // Helper function to validate a field
+  function validateField(field) {
+    const errorElement = field.closest('.form-field').querySelector('.error-message');
+    
+    if (field.validity.valid) {
+      errorElement.textContent = '';
+      field.classList.remove('invalid');
+      return true;
+    } else {
+      showError(field, errorElement);
+      field.classList.add('invalid');
+      return false;
+    }
   }
-}
-
-.join-form {
-  display: grid;
-  gap: 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.join-form fieldset {
-  border: 1px solid var(--light-color);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  background-color: white;
-  box-shadow: var(--card-shadow);
-}
-
-.join-form legend {
-  font-weight: bold;
-  padding: 0 0.5rem;
-  font-size: 1.2rem;
-  color: var(--primary-color);
-}
-
-.join-form label {
-  display: block;
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-
-.join-form input[type="text"],
-.join-form input[type="email"],
-.join-form input[type="tel"],
-.join-form textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: var(--border-radius);
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  transition: var(--transition);
-}
-
-.join-form input:focus,
-.join-form textarea:focus {
-  border-color: var(--secondary-color);
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-}
-
-.join-form textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-/* Membership Level Options */
-.membership-levels {
-  display: grid;
-  gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .membership-levels {
-    grid-template-columns: repeat(2, 1fr);
+  
+  // Helper function to show appropriate error message
+  function showError(field, errorElement) {
+    if (field.validity.valueMissing) {
+      errorElement.textContent = 'This field is required';
+    } else if (field.validity.typeMismatch) {
+      errorElement.textContent = 'Please enter a valid ' + field.type;
+    } else if (field.validity.patternMismatch) {
+      if (field.name === 'title') {
+        errorElement.textContent = 'Minimum 7 letters, spaces, or hyphens';
+      } else if (field.name === 'phone') {
+        errorElement.textContent = 'Please enter a valid phone number';
+      }
+    } else if (field.validity.tooShort) {
+      errorElement.textContent = `Minimum length is ${field.minLength} characters`;
+    }
   }
-}
-
-.membership-option {
-  position: relative;
-  cursor: pointer;
-}
-
-.membership-option input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-}
-
-.membership-card {
-  border: 2px solid var(--light-color);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  transition: var(--transition);
-  height: 100%;
-  background-color: white;
-}
-
-.membership-option input[type="radio"]:checked + .membership-card {
-  border-color: var(--secondary-color);
-  background-color: #f8fafc;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
-}
-
-.membership-option:hover .membership-card {
-  border-color: var(--secondary-color);
-}
-
-.membership-card h3 {
-  margin-top: 0;
-  color: var(--primary-color);
-  font-size: 1.2rem;
-}
-
-.membership-card p {
-  margin: 0.5rem 0;
-  color: var(--text-color);
-}
-
-.membership-card .price {
-  font-weight: bold;
-  color: var(--success-color);
-  margin-top: 0.75rem;
-}
-
-/* Submit Button */
-.join-form button {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: var(--transition);
-  width: 100%;
-  margin-top: 1rem;
-}
-
-.join-form button:hover {
-  background-color: var(--dark-color);
-}
-
-/* Animation for form elements */
-.join-form fieldset {
-  animation: fadeInUp 0.5s ease-out forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.join-form fieldset:nth-child(1) { animation-delay: 0.1s; }
-.join-form fieldset:nth-child(2) { animation-delay: 0.3s; }
-.join-form fieldset:nth-child(3) { animation-delay: 0.5s; }
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+  
+  // Enhance membership card selection
+  const membershipOptions = document.querySelectorAll('.membership-option');
+  
+  membershipOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      // Update aria attributes for accessibility
+      membershipOptions.forEach(opt => {
+        opt.setAttribute('aria-checked', 'false');
+      });
+      this.setAttribute('aria-checked', 'true');
+    });
+    
+    // Keyboard navigation
+    option.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.click();
+      }
+    });
+  });
+});
