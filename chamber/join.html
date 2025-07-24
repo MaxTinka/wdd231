@@ -106,27 +106,43 @@
           </label>
         </fieldset>
         
-        <fieldset>
+        <fieldset class="membership-levels">
           <legend>Membership Level</legend>
           
           <label class="membership-option">
             <input type="radio" name="membershipLevel" value="NP Membership" checked>
-            <span>NP Membership (Non-Profit)</span>
+            <div class="membership-card">
+              <h3>NP Membership</h3>
+              <p>For non-profit organizations</p>
+              <p class="price">No fee</p>
+            </div>
           </label>
           
           <label class="membership-option">
             <input type="radio" name="membershipLevel" value="Bronze Membership">
-            <span>Bronze Membership</span>
+            <div class="membership-card">
+              <h3>Bronze Membership</h3>
+              <p>Basic level benefits</p>
+              <p class="price">$250/year</p>
+            </div>
           </label>
           
           <label class="membership-option">
             <input type="radio" name="membershipLevel" value="Silver Membership">
-            <span>Silver Membership</span>
+            <div class="membership-card">
+              <h3>Silver Membership</h3>
+              <p>Enhanced benefits</p>
+              <p class="price">$500/year</p>
+            </div>
           </label>
           
           <label class="membership-option">
             <input type="radio" name="membershipLevel" value="Gold Membership">
-            <span>Gold Membership</span>
+            <div class="membership-card">
+              <h3>Gold Membership</h3>
+              <p>Premium benefits</p>
+              <p class="price">$1000/year</p>
+            </div>
           </label>
         </fieldset>
         
@@ -134,98 +150,6 @@
         
         <button type="submit" class="button">Submit Application</button>
       </form>
-      
-      <div class="membership-cards">
-        <div class="card np-card">
-          <h3>NP Membership</h3>
-          <p>For non-profit organizations</p>
-          <p><strong>No fee</strong></p>
-          <a href="#np-modal" class="info-link">Learn More</a>
-        </div>
-        
-        <div class="card bronze-card">
-          <h3>Bronze Membership</h3>
-          <p>Basic level benefits</p>
-          <p><strong>$250/year</strong></p>
-          <a href="#bronze-modal" class="info-link">Learn More</a>
-        </div>
-        
-        <div class="card silver-card">
-          <h3>Silver Membership</h3>
-          <p>Enhanced benefits</p>
-          <p><strong>$500/year</strong></p>
-          <a href="#silver-modal" class="info-link">Learn More</a>
-        </div>
-        
-        <div class="card gold-card">
-          <h3>Gold Membership</h3>
-          <p>Premium benefits</p>
-          <p><strong>$1000/year</strong></p>
-          <a href="#gold-modal" class="info-link">Learn More</a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Membership Modals -->
-    <div id="np-modal" class="modal">
-      <div class="modal-content">
-        <a href="#" class="close-modal">&times;</a>
-        <h3>NP Membership Benefits</h3>
-        <ul>
-          <li>Listing in our online directory</li>
-          <li>Access to member-only resources</li>
-          <li>Monthly newsletter</li>
-          <li>Non-profit networking events</li>
-          <li>No membership fee</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div id="bronze-modal" class="modal">
-      <div class="modal-content">
-        <a href="#" class="close-modal">&times;</a>
-        <h3>Bronze Membership Benefits</h3>
-        <ul>
-          <li>All NP benefits plus:</li>
-          <li>Business listing with logo</li>
-          <li>10% discount on chamber events</li>
-          <li>Access to business training workshops</li>
-          <li>Quarterly business spotlight opportunity</li>
-          <li>$250 annual fee</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div id="silver-modal" class="modal">
-      <div class="modal-content">
-        <a href="#" class="close-modal">&times;</a>
-        <h3>Silver Membership Benefits</h3>
-        <ul>
-          <li>All Bronze benefits plus:</li>
-          <li>20% discount on chamber events</li>
-          <li>Priority placement in directory</li>
-          <li>Monthly business spotlight opportunity</li>
-          <li>Free admission to two premium events/year</li>
-          <li>$500 annual fee</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div id="gold-modal" class="modal">
-      <div class="modal-content">
-        <a href="#" class="close-modal">&times;</a>
-        <h3>Gold Membership Benefits</h3>
-        <ul>
-          <li>All Silver benefits plus:</li>
-          <li>30% discount on chamber events</li>
-          <li>Featured placement in directory</li>
-          <li>Weekly business spotlight opportunity</li>
-          <li>Free admission to all premium events</li>
-          <li>Dedicated marketing support</li>
-          <li>VIP access to chamber leadership</li>
-          <li>$1000 annual fee</li>
-        </ul>
-      </div>
     </div>
   </main>
 
@@ -295,32 +219,12 @@
         primaryNav.classList.toggle('active');
       });
 
-      // Modal functionality
-      const infoLinks = document.querySelectorAll('.info-link');
-      const modals = document.querySelectorAll('.modal');
-      const closeButtons = document.querySelectorAll('.close-modal');
-      
-      infoLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const modalId = this.getAttribute('href');
-          document.querySelector(modalId).style.display = 'flex';
-        });
-      });
-      
-      closeButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          this.closest('.modal').style.display = 'none';
-        });
-      });
-      
-      // Close modal when clicking outside content
-      modals.forEach(modal => {
-        modal.addEventListener('click', function(e) {
-          if (e.target === this) {
-            this.style.display = 'none';
-          }
+      // Membership card selection
+      const membershipOptions = document.querySelectorAll('.membership-option');
+      membershipOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          membershipOptions.forEach(opt => opt.classList.remove('selected'));
+          this.classList.add('selected');
         });
       });
     });
