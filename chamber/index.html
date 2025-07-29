@@ -14,14 +14,370 @@
   <link rel="stylesheet" href="styles/normalize.css" />
   <link rel="stylesheet" href="styles/base.css" />
   <link rel="stylesheet" href="styles/large.css" media="(min-width: 768px)" />
+  <style>
+    /* ======= Added styles for appeal ======= */
+
+    :root {
+      --primary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --background-light: #f9fafb;
+      --text-dark: #222;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-dark);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    a:hover, a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Header */
+    header {
+      background-color: #fff;
+      border-bottom: 2px solid var(--accent-color);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo svg {
+      display: block;
+    }
+    .logo .name {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    #menu-button {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--primary-color);
+    }
+    nav#primary-nav {
+      flex-basis: 100%;
+      margin-top: 0.5rem;
+      display: none;
+    }
+    nav#primary-nav.active {
+      display: block;
+    }
+    nav#primary-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav#primary-nav li a {
+      padding: 0.5rem 0;
+      font-weight: 600;
+    }
+    nav#primary-nav li a[aria-current="page"] {
+      color: var(--accent-color);
+      border-bottom: 3px solid var(--accent-color);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1rem 6rem;
+      max-width: 1200px;
+      margin: 2rem auto 3rem;
+    }
+    .hero picture img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      filter: brightness(0.55);
+      transition: filter 0.3s ease;
+    }
+    .hero:hover picture img,
+    .hero:focus-within picture img {
+      filter: brightness(0.65);
+    }
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90%;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      line-height: 1.1;
+    }
+    .hero-content .button {
+      background-color: var(--accent-color);
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.125rem;
+      box-shadow: 0 6px 10px rgba(231, 76, 60, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      user-select: none;
+    }
+    .hero-content .button:hover,
+    .hero-content .button:focus {
+      background-color: #c0392b;
+      box-shadow: 0 8px 18px rgba(192, 57, 43, 0.9);
+      outline: none;
+    }
+
+    /* Company Spotlight */
+    .company-spotlight {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+    }
+    .company-spotlight h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+    }
+    .spotlight-cards {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .spotlight-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      width: 280px;
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .spotlight-card:hover,
+    .spotlight-card:focus {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      outline: none;
+    }
+    .spotlight-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .spotlight-card h3 {
+      margin: 0.5rem 0 0.75rem;
+      color: var(--accent-color);
+      font-weight: 700;
+    }
+    .spotlight-card p {
+      color: #555;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    /* Events */
+    .events {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+    }
+    .events h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+    }
+    .event-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      justify-items: center;
+    }
+    .event-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      padding: 1.25rem;
+      width: 100%;
+      max-width: 320px;
+      transition: box-shadow 0.3s ease;
+    }
+    .event-card:hover,
+    .event-card:focus {
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      outline: none;
+    }
+    .event-card h3 {
+      margin-top: 0;
+      color: var(--accent-color);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    .event-card time {
+      font-style: italic;
+      color: #666;
+      display: block;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+    }
+    .event-card p {
+      margin: 0;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* Weather */
+    .weather {
+      max-width: 350px;
+      margin: 0 auto 3rem;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(231, 76, 60, 0.6);
+      text-align: center;
+    }
+    .weather h2 {
+      margin-top: 0;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    .weather-card h3 {
+      margin: 0.75rem 0 1rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    .weather-card img {
+      width: 80px;
+      height: 80px;
+    }
+    .weather-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      font-weight: 600;
+    }
+    .weather-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #222;
+      color: #ccc;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .contact-info {
+      flex: 1 1 280px;
+    }
+    .contact-info h3 {
+      color: var(--accent-color);
+      margin-top: 0;
+      font-weight: 700;
+    }
+    .contact-info p {
+      margin: 0.3rem 0;
+    }
+    .social-media {
+      flex: 0 0 140px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1rem;
+    }
+    .social-media a {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      color: var(--accent-color);
+      background: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 36px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .social-media a:hover,
+    .social-media a:focus {
+      background: var(--accent-color);
+      color: #fff;
+      outline: none;
+    }
+    .development-info {
+      flex: 1 1 280px;
+      text-align: right;
+      color: #aaa;
+      font-style: italic;
+    }
+    @media (max-width: 767px) {
+      .development-info {
+        text-align: left;
+      }
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav#primary-nav {
+        flex-basis: auto;
+      }
+      nav#primary-nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to Main Content</a>
+
   <header>
     <div class="header-container">
       <div class="logo">
-        <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
-          <circle cx="30" cy="30" r="25" fill="#2c3e50" />
+        <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true" focusable="false">
+          <circle cx="30" cy="30" r="25" fill="#2c3e50"></circle>
           <text x="30" y="38" font-family="Roboto" font-size="20" fill="white" text-anchor="middle">CC</text>
         </svg>
         <span class="name">Local Chamber</span>
@@ -31,6 +387,7 @@
         <span class="sr-only">Menu</span>
       </button>
     </div>
+
     <nav id="primary-nav" aria-label="Primary navigation">
       <ul>
         <li><a href="index.html" aria-current="page">Home</a></li>
@@ -42,8 +399,8 @@
     </nav>
   </header>
 
-  <main id="main-content">
-    <section class="hero">
+  <main id="main-content" tabindex="-1">
+    <section class="hero" tabindex="0">
       <picture>
         <source media="(min-width: 1200px)" srcset="images/hero-large.webp" />
         <source media="(min-width: 768px)" srcset="images/hero-medium.webp" />
@@ -55,15 +412,15 @@
       </div>
     </section>
 
-    <section class="company-spotlight">
+    <section class="company-spotlight" aria-label="Member Spotlights">
       <h2>Member Spotlights</h2>
       <div class="spotlight-cards">
-        <article class="spotlight-card">
+        <article class="spotlight-card" tabindex="0">
           <img src="images/company1.jpg" alt="Logo of Company A" width="200" height="150" loading="lazy" />
           <h3>Company A</h3>
           <p>A leading local business in retail services.</p>
         </article>
-        <article class="spotlight-card">
+        <article class="spotlight-card" tabindex="0">
           <img src="images/company2.jpg" alt="Logo of Company B" width="200" height="150" loading="lazy" />
           <h3>Company B</h3>
           <p>Innovative tech firm making waves in our region.</p>
@@ -71,26 +428,17 @@
       </div>
     </section>
 
-    <section class="events">
+    <section class="events" aria-label="Upcoming Events">
       <h2>Upcoming Events</h2>
       <div class="event-cards" aria-live="polite" aria-atomic="true">
         <!-- dynamically loaded events -->
       </div>
     </section>
 
-     <!-- Weather Widget -->
     <section class="weather" aria-label="Current Weather">
       <h2>Weather in Entebbe</h2>
-      <div id="weather-container">
+      <div class="weather-card" aria-live="polite" aria-atomic="true">
         <p>Loading weather...</p>
-      </div>
-    </section>
-
-    <!-- Company Spotlight -->
-    <section class="spotlight" aria-label="Company Spotlights">
-      <h2>Member Spotlights</h2>
-      <div id="spotlight-container">
-        <!-- Populated dynamically -->
       </div>
     </section>
   </main>
@@ -101,12 +449,12 @@
         <h3>Contact Us</h3>
         <p>123 Commerce Street</p>
         <p>Entebbe City</p>
-        <p>Phone: (256) 770826951</p>
-        <p>Email: info@localchamber.org</p>
+        <p>Phone: <a href="tel:+256770826951" style="color: inherit;">(256) 770826951</a></p>
+        <p>Email: <a href="mailto:info@localchamber.org" style="color: inherit;">info@localchamber.org</a></p>
       </div>
       <div class="social-media">
-        <a href="#" aria-label="Facebook">FB</a>
-        <a href="#" aria-label="LinkedIn">LI</a>
+        <a href="#" aria-label="Facebook" title="Facebook" tabindex="0" style="font-weight:bold;">F</a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn" tabindex="0" style="font-weight:bold;">L</a>
       </div>
       <div class="development-info">
         <p>&copy; <span id="current-year"></span> Local Chamber of Commerce</p>
@@ -136,29 +484,55 @@
       {title:'Networking Breakfast', date:'2025-08-22', description:'Build valuable connections.'},
       {title:'Community Clean‑up Day', date:'2025-09-05', description:'Volunteer to improve our city.'}
     ];
-    function formatDate(d){ return new Date(d).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'}); }
+    function formatDate(d) {
+      return new Date(d).toLocaleDateString(undefined, {year:'numeric', month:'long', day:'numeric'});
+    }
     const eventContainer = document.querySelector('.event-cards');
-    events.forEach(e=>{
+    events.forEach(e => {
       const card = document.createElement('article');
       card.className = 'event-card';
-      card.innerHTML = `<h3>${e.title}</h3><time datetime="${e.date}">${formatDate(e.date)}</time><p>${e.description}</p>`;
+      card.tabIndex = 0;
+      card.innerHTML = `
+        <h3>${e.title}</h3>
+        <time datetime="${e.date}">${formatDate(e.date)}</time>
+        <p>${e.description}</p>
+      `;
       eventContainer.appendChild(card);
     });
 
-    // Load weather (placeholder areas from similar earlier script)...
-
+    // Load weather with icons
     async function fetchWeather(){
-      const apiKey='YOUR_OPENWEATHERMAP_API_KEY', lat=0.05, lon=32.46;
-      try{
+      const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY'; // Replace with your API key
+      const lat = 0.05, lon = 32.46; // Entebbe coordinates
+      const weatherCard = document.querySelector('.weather-card');
+      try {
         const resp = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,hourly,alerts&appid=${apiKey}`);
-        if(!resp.ok) throw '';
-        const data = await resp.json(), c=data.current, d=data.daily;
-        let html=`<h3>Current Weather</h3><p>Temp: ${Math.round(c.temp)}°C — ${c.weather[0].description}</p><h3>3‑Day Forecast</h3><ul>`;
-        for(let i=1;i<=3;i++){ const day=d[i]; const dt=new Date(day.dt*1000).toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}); html+=`<li><strong>${dt}</strong>: ${Math.round(day.temp.day)}°C, ${day.weather[0].description}</li>`; }
-        html+='</ul>';
-        document.querySelector('.weather-card').innerHTML=html;
-      } catch {
-        document.querySelector('.weather-card').innerHTML='<p>Unable to load weather data.</p>';
+        if(!resp.ok) throw new Error('Network response was not ok');
+        const data = await resp.json();
+        const c = data.current;
+        const d = data.daily;
+        const iconUrl = `https://openweathermap.org/img/wn/${c.weather[0].icon}@2x.png`;
+
+        let html = `
+          <h3>Current Weather</h3>
+          <img src="${iconUrl}" alt="${c.weather[0].description}" width="80" height="80" />
+          <p>Temperature: ${Math.round(c.temp)}°C — ${c.weather[0].description}</p>
+          <h3>3-Day Forecast</h3>
+          <ul>
+        `;
+
+        for(let i = 1; i <= 3; i++) {
+          const day = d[i];
+          const dt = new Date(day.dt * 1000).toLocaleDateString(undefined, {weekday:'short', month:'short', day:'numeric'});
+          const icon = `https://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
+          html += `<li><img src="${icon}" alt="${day.weather[0].description}" width="24" height="24" style="vertical-align:middle; margin-right:6px;"> <strong>${dt}</strong>: ${Math.round(day.temp.day)}°C, ${day.weather[0].description}</li>`;
+        }
+        html += '</ul>';
+
+        weatherCard.innerHTML = html;
+      } catch (error) {
+        weatherCard.innerHTML = '<p>Unable to load weather data.</p>';
+        console.error('Weather fetch error:', error);
       }
     }
     fetchWeather();
