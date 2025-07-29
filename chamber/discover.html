@@ -1,100 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Discover what Entebbe has to offer!" />
-  <title>Discover | Entebbe Chamber of Commerce</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Discover what our area has to offer!" />
+  <meta name="author" content="Max Tinka" />
+  <meta property="og:title" content="Discover | Local Chamber of Commerce" />
+  <meta property="og:description" content="Explore local businesses and community highlights" />
+  <meta property="og:image" content="images/discover-preview.jpg" />
+  <meta property="og:url" content="discover.html" />
+  <title>Discover | Local Chamber of Commerce</title>
+
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="styles/normalize.css" />
   <link rel="stylesheet" href="styles/base.css" />
-  <link rel="stylesheet" href="styles/medium.css" />
-  <link rel="stylesheet" href="styles/larger.css" />
+  <link rel="stylesheet" href="styles/large.css" media="(min-width: 768px)" />
+
+  <!-- Dark mode support -->
+  <link rel="stylesheet" href="styles/dark.css" media="(prefers-color-scheme: dark)" />
+
+  <script src="scripts/dates.js" defer></script>
   <script src="scripts/discover.js" defer></script>
 </head>
-
 <body>
+  <a href="#main-content" class="skip-link">Skip to Main Content</a>
+
   <header>
-    <h1>Entebbe Chamber of Commerce</h1>
-    <nav>
+    <div class="header-container">
+      <div class="logo">
+        <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true" focusable="false">
+          <circle cx="30" cy="30" r="25" fill="#2c3e50"></circle>
+          <text x="30" y="38" font-family="Roboto" font-size="20" fill="white" text-anchor="middle">CC</text>
+        </svg>
+        <span class="name">Local Chamber</span>
+      </div>
+      <button id="menu-button" aria-expanded="false" aria-label="Toggle navigation menu" aria-controls="primary-nav">
+        <span class="hamburger-icon">☰</span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+
+    <nav id="primary-nav" role="navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="discover.html" class="active">Discover</a></li>
+        <li><a href="discover.html" aria-current="page">Discover</a></li>
         <li><a href="directory.html">Directory</a></li>
         <li><a href="join.html">Join</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="discover-grid">
+  <main id="main-content" tabindex="-1" class="discover-grid">
     <aside id="sidebar">
-      <section class="visit-info">
-        <h2>Visit Info</h2>
-        <div class="visit-message"></div>
-      </section>
-
-      <section class="weather">
-        <h2>Current Weather</h2>
-        <p id="weather-temp"></p>
-        <p id="weather-description"></p>
-        <img id="weather-icon" src="" alt="Weather Icon" />
+      <div class="visit-message"></div>
+      <section class="weather" aria-label="Current Weather">
+        <h2>Current Weather in Entebbe</h2>
+        <div id="weather-container">
+          <p>Loading weather...</p>
+        </div>
       </section>
     </aside>
 
-    <section class="gallery">
-      <!-- 8 interest cards dynamically loaded here -->
+    <section class="gallery" aria-label="Local Highlights Gallery">
+      <!-- Cards will be loaded here dynamically by discover.js -->
     </section>
   </main>
 
   <footer>
-    <p>&copy; <span id="year"></span> Entebbe Chamber of Commerce</p>
-    <p id="lastModified"></p>
+    <div class="footer-content">
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <address>
+          123 Commerce Street Entebbe<br />
+          Entebbe City<br />
+          Phone: <a href="tel:+256770826951">+256 770 826 951</a><br />
+          Email: <a href="mailto:info@localchamber.org">info@localchamber.org</a>
+        </address>
+      </div>
+      <div class="social-media">
+        <a href="#" aria-label="Facebook" title="Facebook" tabindex="0" style="font-weight:bold;">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn" tabindex="0" style="font-weight:bold;">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14C2.239 0 0 2.239 0 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5V5c0-2.761-2.239-5-5-5zM8 19H5V8h3v11zm-1.5-12.25a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5zM20 19h-3v-5.6c0-3.4-4-3.2-4 0V19h-3V8h3v1.8c1.4-2.6 7-2.8 7 2.5V19z"/></svg>
+        </a>
+      </div>
+      <div class="development-info">
+        <p>&copy; <span id="current-year"></span> Local Chamber of Commerce</p>
+        <p>Max Tinka | WDD 231 Project</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+      </div>
+    </div>
   </footer>
 
   <script>
-    // Footer info
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("lastModified").textContent = `Last Modified: ${document.lastModified}`;
+    // Toggle mobile menu
+    const menuButton = document.getElementById('menu-button');
+    const primaryNav = document.getElementById('primary-nav');
+    menuButton.addEventListener('click', () => {
+      const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!expanded));
+      primaryNav.classList.toggle('active');
+    });
 
-    // Weather section
-    const apiKey = "YOUR_API_KEY"; // Replace with your actual OpenWeatherMap API key
-    const city = "Entebbe";
-
-    async function fetchWeather() {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("Failed to fetch weather.");
-        const data = await response.json();
-        document.getElementById("weather-temp").textContent = `Temperature: ${data.main.temp} °C`;
-        document.getElementById("weather-description").textContent = `Conditions: ${data.weather[0].description}`;
-        const icon = data.weather[0].icon;
-        const img = document.getElementById("weather-icon");
-        img.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-        img.alt = data.weather[0].description;
-      } catch (error) {
-        document.querySelector(".weather").textContent = "Weather data not available.";
-      }
-    }
-
-    fetchWeather();
-
-    // Visit message using localStorage
-    const visitDiv = document.querySelector(".visit-message");
-    const today = Date.now();
-    const lastVisit = localStorage.getItem("lastVisit");
-
-    if (!lastVisit) {
-      visitDiv.textContent = "Welcome! Let us know if you have any questions.";
-    } else {
-      const diff = today - parseInt(lastVisit);
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      visitDiv.textContent = days < 1
-        ? "Back so soon! Awesome!"
-        : `You last visited ${days} day${days !== 1 ? "s" : ""} ago.`;
-    }
-
-    localStorage.setItem("lastVisit", today);
+    // Update year and last modified
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    document.getElementById('lastModified').textContent = document.lastModified;
   </script>
 </body>
-
 </html>
