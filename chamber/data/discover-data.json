@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Entebbe Botanical Gardens",
+    "image": "images/ente_gardens.webp",
+    "address": "P.O. Box 1234, Entebbe, Uganda",
+    "description": "A beautiful botanical garden showcasing native plants and wildlife."
+  },
+  {
+    "title": "Uganda Wildlife Education Center",
+    "image": "images/uwec.webp",
+    "address": "Nakiwogo Road, Entebbe",
+    "description": "A zoo and wildlife rescue center dedicated to education and conservation."
+  },
+  {
+    "title": "Lake Victoria Beachfront",
+    "image": "images/lake_victoria_beach.webp",
+    "address": "Entebbe Waterfront, Entebbe",
+    "description": "Relax and enjoy scenic views and activities on the shores of Lake Victoria."
+  },
+  {
+    "title": "Entebbe Craft Market",
+    "image": "images/craft_market.webp",
+    "address": "Kampala Road, Entebbe",
+    "description": "Shop for authentic Ugandan crafts, textiles, and souvenirs."
+  },
+  {
+    "title": "Botanical Beach Resort",
+    "image": "images/botanical_resort.webp",
+    "address": "Plot 23, Entebbe",
+    "description": "A charming resort offering lakeside accommodation and dining."
+  },
+  {
+    "title": "Ngamba Island Chimpanzee Sanctuary",
+    "image": "images/ngamba_island.webp",
+    "address": "Ngamba Island, Lake Victoria",
+    "description": "Visit rescued chimpanzees in a beautiful island sanctuary."
+  },
+  {
+    "title": "Entebbe Airport",
+    "image": "images/airport.webp",
+    "address": "Kampala-Entebbe Road",
+    "description": "The international gateway to Uganda, with modern facilities."
+  },
+  {
+    "title": "Uganda National Museum",
+    "image": "images/national_museum.webp",
+    "address": "Kampala, near Entebbe",
+    "description": "Explore Uganda’s rich history and cultural heritage."
+  }
+]
