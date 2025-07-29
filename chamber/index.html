@@ -47,7 +47,7 @@
       <picture>
         <source media="(min-width: 1200px)" srcset="images/hero-large.webp" />
         <source media="(min-width: 768px)" srcset="images/hero-medium.webp" />
-        <img src="images/hero-small.webp" alt="Downtown city view" width="1200" height="600" loading="lazy" />
+        <img src="images/hero-small.webp" alt="Downtown city streets in bright daylight" width="1200" height="600" loading="lazy" />
       </picture>
       <div class="hero-content">
         <h1>Welcome to Our Community</h1>
@@ -55,17 +55,33 @@
       </div>
     </section>
 
+    <section class="company-spotlight">
+      <h2>Member Spotlights</h2>
+      <div class="spotlight-cards">
+        <article class="spotlight-card">
+          <img src="images/company1.jpg" alt="Logo of Company A" width="200" height="150" loading="lazy" />
+          <h3>Company A</h3>
+          <p>A leading local business in retail services.</p>
+        </article>
+        <article class="spotlight-card">
+          <img src="images/company2.jpg" alt="Logo of Company B" width="200" height="150" loading="lazy" />
+          <h3>Company B</h3>
+          <p>Innovative tech firm making waves in our region.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="events">
       <h2>Upcoming Events</h2>
       <div class="event-cards" aria-live="polite" aria-atomic="true">
-        <!-- Events will be loaded dynamically -->
+        <!-- dynamically loaded events -->
       </div>
     </section>
 
     <section class="weather">
       <h2>Local Weather</h2>
       <div class="weather-card" aria-live="polite" aria-atomic="true">
-        <!-- Weather will be loaded dynamically -->
+        <!-- dynamically loaded weather -->
       </div>
     </section>
   </main>
@@ -80,20 +96,12 @@
         <p>Email: info@localchamber.org</p>
       </div>
       <div class="social-media">
-        <a href="#" aria-label="Facebook">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-          </svg>
-        </a>
-        <a href="#" aria-label="LinkedIn">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-          </svg>
-        </a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
       </div>
       <div class="development-info">
         <p>&copy; <span id="current-year"></span> Local Chamber of Commerce</p>
-        <p>Max Tinka | WDD 231 Project</p>
+        <p>Max Tinka | WDD 231 Project</p>
         <p>Last Modified: <span id="lastModified"></span></p>
       </div>
     </div>
@@ -103,96 +111,47 @@
     // Toggle mobile menu
     const menuButton = document.getElementById('menu-button');
     const primaryNav = document.getElementById('primary-nav');
-
     menuButton.addEventListener('click', () => {
-      const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
-      menuButton.setAttribute('aria-expanded', !expanded);
+      const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!expanded));
       primaryNav.classList.toggle('active');
     });
 
-    // Update current year and last modified date
+    // Update year and last modified
     document.getElementById('current-year').textContent = new Date().getFullYear();
     document.getElementById('lastModified').textContent = document.lastModified;
 
-    // Sample events
+    // Load sample events
     const events = [
-      {
-        title: 'Annual Business Expo',
-        date: '2025-08-15',
-        description: 'Showcase your business and network with local entrepreneurs.',
-      },
-      {
-        title: 'Networking Breakfast',
-        date: '2025-08-22',
-        description: 'Join us for breakfast and build valuable connections.',
-      },
-      {
-        title: 'Community Clean-up Day',
-        date: '2025-09-05',
-        description: 'Help improve our city’s environment by volunteering.',
-      },
+      {title:'Annual Expo', date:'2025-08-15', description:'Showcase and connect local businesses.'},
+      {title:'Networking Breakfast', date:'2025-08-22', description:'Build valuable connections.'},
+      {title:'Community Clean‑up Day', date:'2025-09-05', description:'Volunteer to improve our city.'}
     ];
-
-    function formatDate(dateStr) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      return new Date(dateStr).toLocaleDateString(undefined, options);
-    }
-
+    function formatDate(d){ return new Date(d).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'}); }
     const eventContainer = document.querySelector('.event-cards');
-    events.forEach((event) => {
+    events.forEach(e=>{
       const card = document.createElement('article');
       card.className = 'event-card';
-      card.innerHTML = `
-        <h3>${event.title}</h3>
-        <time datetime="${event.date}">${formatDate(event.date)}</time>
-        <p>${event.description}</p>
-      `;
+      card.innerHTML = `<h3>${e.title}</h3><time datetime="${e.date}">${formatDate(e.date)}</time><p>${e.description}</p>`;
       eventContainer.appendChild(card);
     });
 
-    // Weather
-    const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
-    const lat = 0.05;
-    const lon = 32.46;
-    const weatherContainer = document.querySelector('.weather-card');
+    // Load weather (placeholder areas from similar earlier script)...
 
-    async function fetchWeather() {
-      try {
-        const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,hourly,alerts&appid=${apiKey}`
-        );
-        if (!response.ok) throw new Error('Weather data not available');
-        const data = await response.json();
-        const current = data.current;
-        const daily = data.daily;
-
-        const currentWeatherHTML = `
-          <h3>Current Weather</h3>
-          <p>Temperature: ${Math.round(current.temp)}&deg;C</p>
-          <p>Conditions: ${current.weather[0].description}</p>
-        `;
-
-        let forecastHTML = '<h3>3-Day Forecast</h3><ul class="forecast-list">';
-        for (let i = 1; i <= 3; i++) {
-          const day = daily[i];
-          const date = new Date(day.dt * 1000);
-          const options = { weekday: 'short', month: 'short', day: 'numeric' };
-          forecastHTML += `
-            <li>
-              <strong>${date.toLocaleDateString(undefined, options)}</strong>: 
-              ${Math.round(day.temp.day)}&deg;C, ${day.weather[0].description}
-            </li>
-          `;
-        }
-        forecastHTML += '</ul>';
-
-        weatherContainer.innerHTML = currentWeatherHTML + forecastHTML;
-      } catch (error) {
-        weatherContainer.innerHTML = `<p>Unable to load weather data.</p>`;
-        console.error(error);
+    async function fetchWeather(){
+      const apiKey='YOUR_OPENWEATHERMAP_API_KEY', lat=0.05, lon=32.46;
+      try{
+        const resp = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,hourly,alerts&appid=${apiKey}`);
+        if(!resp.ok) throw '';
+        const data = await resp.json(), c=data.current, d=data.daily;
+        let html=`<h3>Current Weather</h3><p>Temp: ${Math.round(c.temp)}°C — ${c.weather[0].description}</p><h3>3‑Day Forecast</h3><ul>`;
+        for(let i=1;i<=3;i++){ const day=d[i]; const dt=new Date(day.dt*1000).toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}); html+=`<li><strong>${dt}</strong>: ${Math.round(day.temp.day)}°C, ${day.weather[0].description}</li>`; }
+        html+='</ul>';
+        document.querySelector('.weather-card').innerHTML=html;
+      } catch {
+        document.querySelector('.weather-card').innerHTML='<p>Unable to load weather data.</p>';
       }
     }
-
     fetchWeather();
   </script>
 </body>
