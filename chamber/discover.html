@@ -1,394 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Discover Entebbe and its vibrant community. Local Chamber of Commerce promotes business and growth." />
-  <meta name="author" content="Your Name" />
-  <meta property="og:title" content="Discover Entebbe | Local Chamber of Commerce" />
-  <meta property="og:description" content="Explore the best of Entebbe's culture, businesses, and attractions." />
-  <meta property="og:image" content="https://yourdomain.com/images/discover-preview.jpg" />
-  <meta property="og:url" content="https://yourdomain.com/chamber/discover.html" />
-  <title>Discover | Local Chamber of Commerce</title>
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="styles/normalize.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover what our area has to offer!" />
+  <title>Discover | Entebbe Chamber of Commerce</title>
   <link rel="stylesheet" href="styles/base.css" />
-  <link rel="stylesheet" href="styles/medium.css" media="(min-width: 641px) and (max-width: 1024px)" />
-  <link rel="stylesheet" href="styles/large.css" media="(min-width: 1025px)" />
-  <style>
-    /* Main grid container */
-    main.discover-main {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "header"
-        "content"
-        "weather"
-        "sidebar"
-        "footer";
-      gap: 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem;
-    }
-    /* Header inside main */
-    header.discover-header {
-      grid-area: header;
-    }
-    /* Content grid for 8 cards */
-    section#discover-container {
-      grid-area: content;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-    /* Weather section */
-    section.weather {
-      grid-area: weather;
-      background: #f0f4f8;
-      padding: 1rem;
-      border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    }
-    /* Sidebar for last visit message */
-    aside#visit-message {
-      grid-area: sidebar;
-      background: #fff3cd;
-      border-left: 4px solid #ffeeba;
-      padding: 1rem;
-      font-weight: bold;
-      font-size: 1rem;
-      border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
-    /* Footer area */
-    footer {
-      grid-area: footer;
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #555;
-    }
-    /* Discover card styling */
-    .discover-card {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease;
-    }
-    .discover-card figure {
-      margin: 0;
-      overflow: hidden;
-      position: relative;
-    }
-    .discover-card img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: filter 0.3s ease;
-      /* Hover effect only on desktop */
-    }
-    @media (hover: hover) and (pointer: fine) {
-      .discover-card img:hover {
-        filter: brightness(85%) contrast(110%);
-        cursor: pointer;
-      }
-    }
-    .discover-card h2 {
-      margin: 0.5rem 1rem 0.25rem 1rem;
-      font-size: 1.25rem;
-      color: #2c3e50;
-    }
-    .discover-card address {
-      margin: 0 1rem 0.5rem 1rem;
-      font-style: normal;
-      color: #555;
-      font-size: 0.9rem;
-    }
-    .discover-card p {
-      margin: 0 1rem 1rem 1rem;
-      color: #444;
-      flex-grow: 1;
-    }
-    .discover-card button {
-      margin: 0 1rem 1rem 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #3498db;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-      align-self: flex-start;
-      transition: background-color 0.3s ease;
-    }
-    .discover-card button:hover,
-    .discover-card button:focus {
-      background-color: #2c80b4;
-      outline: none;
-    }
-
-    /* Small screens: 1 column for cards */
-    @media (max-width: 640px) {
-      section#discover-container {
-        grid-template-columns: 1fr;
-      }
-      main.discover-main {
-        grid-template-areas:
-          "header"
-          "content"
-          "weather"
-          "sidebar"
-          "footer";
-      }
-    }
-    /* Medium screens: 2 columns */
-    @media (min-width: 641px) and (max-width: 1024px) {
-      section#discover-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      main.discover-main {
-        grid-template-columns: 3fr 1fr;
-        grid-template-areas:
-          "header header"
-          "content sidebar"
-          "weather sidebar"
-          "footer footer";
-      }
-    }
-    /* Large screens: 4 columns and 4 areas */
-    @media (min-width: 1025px) {
-      section#discover-container {
-        grid-template-columns: repeat(4, 1fr);
-      }
-      main.discover-main {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-areas:
-          "header header header header"
-          "content content weather sidebar"
-          "footer footer footer footer";
-      }
-    }
-    /* Weather card styling */
-    .weather-card p {
-      margin: 0;
-      font-size: 1rem;
-      color: #333;
-    }
-    .weather-card ul {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 0.5rem;
-    }
-    .weather-card ul li {
-      font-size: 0.9rem;
-      margin-bottom: 0.3rem;
-    }
-  </style>
+  <link rel="stylesheet" href="styles/medium.css" />
+  <link rel="stylesheet" href="styles/larger.css" />
+  <script src="scripts/discover.js" defer></script>
 </head>
+
 <body>
-  <a href="#main-content" class="skip-link">Skip to Main Content</a>
-
   <header>
-    <div class="header-container">
-      <div class="logo" aria-label="Local Chamber logo">
-        <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true" focusable="false">
-          <circle cx="30" cy="30" r="25" fill="#2c3e50"></circle>
-          <text x="30" y="38" font-family="Roboto" font-size="20" fill="white" text-anchor="middle">CC</text>
-        </svg>
-        <span class="name">Local Chamber</span>
-      </div>
-      <button id="menu-button" aria-expanded="false" aria-label="Toggle navigation menu" aria-controls="primary-nav">
-        <span class="hamburger-icon">☰</span>
-        <span class="sr-only">Menu</span>
-      </button>
-    </div>
-
-    <nav id="primary-nav" role="navigation" aria-label="Primary navigation">
+    <h1>Entebbe Chamber of Commerce</h1>
+    <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="discover.html" aria-current="page">Discover</a></li>
+        <li><a href="discover.html" class="active">Discover</a></li>
         <li><a href="directory.html">Directory</a></li>
         <li><a href="join.html">Join</a></li>
-        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main id="main-content" tabindex="-1" class="discover-main">
-
-    <header class="discover-header">
-      <h1>Discover Entebbe</h1>
-      <p>Explore the culture, attractions, and businesses that make Entebbe a vibrant community.</p>
-    </header>
-
-    <section id="discover-container" aria-label="Area points of interest">
-      <!-- Cards dynamically loaded by JS -->
-    </section>
-
-    <section class="weather" aria-label="Current Weather">
-      <h2>Weather in Entebbe</h2>
-      <div id="weather-container" class="weather-card" tabindex="0" aria-live="polite" aria-atomic="true">
-        <p>Loading weather...</p>
+  <main class="discover-grid">
+    <aside id="sidebar">
+      <div class="visit-message"></div>
+      <div class="weather">
+        <h3>Current Weather</h3>
+        <p id="weather-temp"></p>
+        <p id="weather-description"></p>
+        <img id="weather-icon" src="" alt="Weather Icon" />
       </div>
-    </section>
-
-    <aside id="visit-message" role="complementary" aria-live="polite" aria-atomic="true">
-      <!-- Last visit message populated by JS -->
     </aside>
 
+    <section class="gallery">
+      <!-- Cards inserted here dynamically -->
+    </section>
   </main>
 
   <footer>
-    <div class="footer-content">
-      <p>&copy; <span id="current-year"></span> Local Chamber of Commerce</p>
-      <p>Max Tinka | WDD 231 Project</p>
-      <p>Last Modified: <span id="lastModified"></span></p>
-    </div>
+    <p>&copy; <span id="year"></span> Entebbe Chamber of Commerce</p>
+    <p id="lastModified"></p>
   </footer>
 
   <script>
-    // Toggle mobile menu
-    const menuButton = document.getElementById('menu-button');
-    const primaryNav = document.getElementById('primary-nav');
-    menuButton.addEventListener('click', () => {
-      const expanded = menuButton.getAttribute('aria-expanded') === 'true';
-      menuButton.setAttribute('aria-expanded', String(!expanded));
-      primaryNav.classList.toggle('active');
-    });
+    // Year and Last Modified
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("lastModified").textContent = `Last Modified: ${document.lastModified}`;
 
-    // Update year and last modified date
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    document.getElementById('lastModified').textContent = document.lastModified;
-
-    // Data for 8 discover cards (example data)
-    const discoverData = [
-      {
-        "title": "Entebbe Botanical Gardens",
-        "image": "images/entebbe-botanical.webp",
-        "address": "Plot 62, Lake Victoria, Entebbe",
-        "description": "A peaceful escape showcasing diverse plant species and beautiful lakeside views."
-      },
-      {
-        "title": "Uganda Wildlife Education Centre",
-        "image": "images/uwec.webp",
-        "address": "Nakiwogo Road, Entebbe",
-        "description": "Home to rescued animals and a leader in wildlife education and conservation."
-      },
-      {
-        "title": "Lake Victoria Waterfront",
-        "image": "images/lake-victoria.webp",
-        "address": "Entebbe Waterfront",
-        "description": "Scenic spots to relax, boat rides, and local fish restaurants with lake views."
-      },
-      {
-        "title": "Entebbe International Airport",
-        "image": "images/airport.webp",
-        "address": "Airport Road, Entebbe",
-        "description": "Main international gateway to Uganda, blending modern facilities with cultural touches."
-      },
-      {
-        "title": "Ngamba Island Chimpanzee Sanctuary",
-        "image": "images/ngamba.webp",
-        "address": "Ngamba Island, Lake Victoria",
-        "description": "A sanctuary protecting orphaned chimpanzees, accessible by boat tours."
-      },
-      {
-        "title": "Victoria Golf Club",
-        "image": "images/victoria-golf.webp",
-        "address": "Ggaba Road, Entebbe",
-        "description": "Premier golf course offering lush fairways and social events."
-      },
-      {
-        "title": "Entebbe Craft Market",
-        "image": "images/craft-market.webp",
-        "address": "Along Kampala Road, Entebbe",
-        "description": "Local artisans selling handmade crafts, souvenirs, and cultural items."
-      },
-      {
-        "title": "Botanical Beach Resort",
-        "image": "images/botanical-beach.webp",
-        "address": "Lakeside, Entebbe",
-        "description": "Relaxing resort with water activities and beautiful gardens."
-      }
-    ];
-
-    // Function to create and display discover cards
-    function loadDiscoverCards() {
-      const container = document.getElementById('discover-container');
-      discoverData.forEach(item => {
-        const card = document.createElement('article');
-        card.className = 'discover-card';
-
-        card.innerHTML = `
-          <h2>${item.title}</h2>
-          <figure>
-            <img src="${item.image}" alt="${item.title} photo" width="300" height="200" loading="lazy" />
-          </figure>
-          <address>${item.address}</address>
-          <p>${item.description}</p>
-          <button type="button" aria-label="Learn more about ${item.title}">Learn More</button>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    loadDiscoverCards();
-
-    // Last visit message with localStorage
-    const visitMsg = document.getElementById('visit-message');
-    const lastVisitKey = 'lastVisitDate';
-    const now = Date.now();
-    const lastVisit = localStorage.getItem(lastVisitKey);
-
-    if (!lastVisit) {
-      visitMsg.textContent = "Welcome! Let us know if you have any questions.";
-    } else {
-      const diffMs = now - parseInt(lastVisit, 10);
-      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-      if (diffDays < 1) {
-        visitMsg.textContent = "Back so soon! Awesome!";
-      } else {
-        visitMsg.textContent = `You last visited ${diffDays} day${diffDays === 1 ? '' : 's'} ago.`;
-      }
-    }
-    localStorage.setItem(lastVisitKey, now.toString());
-
-    // Weather fetch and display
+    // Weather Fetching
+    const apiKey = "YOUR_API_KEY"; // Replace with real key
+    const city = "Entebbe";
     async function fetchWeather() {
-      const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY'; // Replace with your OpenWeatherMap API key
-      const lat = 0.05;  // Entebbe latitude
-      const lon = 32.46; // Entebbe longitude
-      const weatherContainer = document.getElementById('weather-container');
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
       try {
-        const resp = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,hourly,alerts&appid=${apiKey}`);
-        if (!resp.ok) throw new Error('Network response was not ok');
-        const data = await resp.json();
-        const current = data.current;
-        const daily = data.daily;
-
-        let html = `<h3>Current Weather</h3>
-          <p>Temp: ${Math.round(current.temp)}°C — ${current.weather[0].description}</p>
-          <h3>3-Day Forecast</h3>
-          <ul>`;
-        for (let i = 1; i <= 3; i++) {
-          const day = daily[i];
-          const date = new Date(day.dt * 1000);
-          const dateString = date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
-          html += `<li><strong>${dateString}:</strong> ${Math.round(day.temp.day)}°C, ${day.weather[0].description}</li>`;
-        }
-        html += '</ul>';
-
-        weatherContainer.innerHTML = html;
-      } catch (error) {
-        weatherContainer.innerHTML = `<p>Unable to load weather data.</p>`;
-        console.error('Weather fetch error:', error);
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Weather unavailable.");
+        const data = await response.json();
+        document.getElementById("weather-temp").textContent = `Temperature: ${data.main.temp} °C`;
+        document.getElementById("weather-description").textContent = `Conditions: ${data.weather[0].description}`;
+        const icon = data.weather[0].icon;
+        const img = document.getElementById("weather-icon");
+        img.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+        img.alt = data.weather[0].description;
+      } catch (err) {
+        console.error(err);
+        document.querySelector(".weather").textContent = "Weather data not available.";
       }
     }
     fetchWeather();
+
+    // Visit Message Logic
+    const visitMsg = document.querySelector(".visit-message");
+    const today = Date.now();
+    const lastVisit = localStorage.getItem("lastVisit");
+    if (!lastVisit) {
+      visitMsg.textContent = "Welcome! Let us know if you have any questions.";
+    } else {
+      const msDiff = today - Number(lastVisit);
+      const days = Math.floor(msDiff / (1000 * 60 * 60 * 24));
+      if (days < 1) {
+        visitMsg.textContent = "Back so soon! Awesome!";
+      } else if (days === 1) {
+        visitMsg.textContent = "You last visited 1 day ago.";
+      } else {
+        visitMsg.textContent = `You last visited ${days} days ago.`;
+      }
+    }
+    localStorage.setItem("lastVisit", today);
   </script>
 </body>
+
 </html>
