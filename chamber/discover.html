@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover Entebbe - Local Chamber of Commerce">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Discover | Local Chamber of Commerce</title>
-  <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/discover.css">
-  <script defer src="scripts/discover.js"></script>
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/medium.css" media="(min-width: 641px)" />
+  <link rel="stylesheet" href="styles/large.css" media="(min-width: 1025px)" />
 </head>
-
 <body>
   <header>
-    <div class="header-container">
-      <img src="images/logo.webp" alt="Chamber Logo" width="50" height="50">
+    <div class="branding">
+      <img src="images/logo.webp" alt="Chamber Logo" />
       <h1>Local Chamber of Commerce</h1>
     </div>
+    <button id="menu" aria-label="Toggle Menu">☰</button>
     <nav>
-      <ul>
+      <ul class="navigation">
         <li><a href="index.html">Home</a></li>
         <li><a href="discover.html" class="active">Discover</a></li>
         <li><a href="directory.html">Directory</a></li>
@@ -27,13 +25,11 @@
     </nav>
   </header>
 
-  <main>
-    <aside class="sidebar">
-      <div id="visitMessage" class="visit-message"></div>
-    </aside>
+  <main id="discover-main">
+    <aside class="sidebar" id="visit-message"></aside>
 
-    <section class="discover-grid">
-      <!-- Cards will be injected here from discover.js -->
+    <section class="gallery" id="interest-gallery">
+      <!-- JS will populate cards here -->
     </section>
   </main>
 
@@ -58,11 +54,11 @@
     </div>
   </footer>
 
+  <script src="scripts/visitMessage.js"></script>
+  <script src="scripts/discover.js"></script>
   <script>
-    // Footer Year and Last Modified
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    document.getElementById('lastModified').textContent = document.lastModified;
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+    document.getElementById("lastModified").textContent = document.lastModified;
   </script>
 </body>
-
 </html>
