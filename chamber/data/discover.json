@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Entebbe Botanical Gardens",
+    "image": "images/botanical_gardens.webp",
+    "alt": "Beautiful view of Entebbe Botanical Gardens",
+    "caption": "Lush greenery and scenic lakeside views",
+    "address": "Along the shores of Lake Victoria, Entebbe",
+    "description": "A serene garden with diverse flora, walking trails, and bird watching spots."
+  },
+  {
+    "name": "Uganda Wildlife Education Center",
+    "image": "images/uwec.webp",
+    "alt": "Giraffes at Uganda Wildlife Education Center",
+    "caption": "Home to rescued animals and wildlife education",
+    "address": "Plot 35, Entebbe-Kampala Rd, Entebbe",
+    "description": "A conservation center offering close encounters with native wildlife."
+  },
+  {
+    "name": "Entebbe Beach",
+    "image": "images/entebbe_beach.webp",
+    "alt": "Sandy shore at Entebbe Beach",
+    "caption": "Relax on the shores of Lake Victoria",
+    "address": "Entebbe Beach Rd, Entebbe",
+    "description": "Popular sandy beach with picnic spots, swimming, and boat rides."
+  },
+  {
+    "name": "Ngamba Island Chimpanzee Sanctuary",
+    "image": "images/ngamba_island.webp",
+    "alt": "Chimpanzees playing at Ngamba Island",
+    "caption": "Sanctuary for rescued chimpanzees",
+    "address": "Ngamba Island, Lake Victoria",
+    "description": "Visit the island to see and learn about chimpanzee rehabilitation."
+  },
+  {
+    "name": "State House Entebbe",
+    "image": "images/state_house.webp",
+    "alt": "Exterior of State House Entebbe",
+    "caption": "Presidential residence and gardens",
+    "address": "Entebbe, Uganda",
+    "description": "Official residence with beautiful gardens and historic significance."
+  },
+  {
+    "name": "Entebbe Golf Club",
+    "image": "images/entebbe_golf.webp",
+    "alt": "Golfers at Entebbe Golf Club",
+    "caption": "18-hole golf course with clubhouse",
+    "address": "Golf Course Rd, Entebbe",
+    "description": "Challenging golf course set amidst tropical surroundings."
+  },
+  {
+    "name": "Botanical Art Gallery",
+    "image": "images/botanical_gallery.webp",
+    "alt": "Artwork displayed at Botanical Art Gallery",
+    "caption": "Showcasing local botanical art",
+    "address": "Main Street, Entebbe",
+    "description": "Gallery exhibiting paintings inspired by local flora."
+  },
+  {
+    "name": "Craft Market Entebbe",
+    "image": "images/craft_market.webp",
+    "alt": "Handmade crafts at Entebbe Craft Market",
+    "caption": "Local handmade crafts and souvenirs",
+    "address": "Market Street, Entebbe",
+    "description": "Shop unique crafts made by local artisans and support the community."
+  }
+]
