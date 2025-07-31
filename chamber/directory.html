@@ -32,6 +32,7 @@
     </div>
 
     <section id="member-container" class="member-container grid-view" aria-live="polite">
+      <!-- Directory Cards -->
       <article class="member-card">
         <h3>Kitoro Tech Hub</h3>
         <p>Empowering youth through digital skills.</p>
@@ -107,13 +108,29 @@
   </main>
 
   <footer>
-    <p>&copy; <span id="year"></span> Entebbe Chamber of Commerce</p>
-    <p id="lastModified"></p>
+    <div class="footer-content">
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>123 Commerce Street</p>
+        <p>Entebbe City</p>
+        <p>Phone: (256) 770826951</p>
+        <p>Email: info@localchamber.org</p>
+      </div>
+      <div class="social-media">
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
+      </div>
+      <div class="development-info">
+        <p>&copy; <span id="current-year"></span> Local Chamber of Commerce</p>
+        <p>Max Tinka | WDD 231 Project</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+      </div>
+    </div>
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("lastModified").textContent = "Last Modified: " + document.lastModified;
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+    document.getElementById("lastModified").textContent = document.lastModified;
   </script>
 </body>
 </html>
