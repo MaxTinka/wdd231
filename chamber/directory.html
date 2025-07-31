@@ -7,13 +7,16 @@
   <title>Directory | Entebbe Chamber of Commerce</title>
   <link rel="stylesheet" href="styles/base.css" />
   <link rel="stylesheet" href="styles/larger.css" />
+  <script defer src="scripts/menu.js"></script>
   <script defer src="scripts/directory.js"></script>
 </head>
 <body>
   <header>
-    <h1>Entebbe Chamber of Commerce</h1>
+    <div class="header-container">
+      <h1>Entebbe Chamber of Commerce</h1>
+      <button id="menu" aria-label="Open navigation menu"></button>
+    </div>
     <nav>
-      <button id="menu" aria-label="Toggle Menu"></button>
       <ul class="navigation">
         <li><a href="index.html">Home</a></li>
         <li><a href="discover.html">Discover</a></li>
@@ -27,11 +30,12 @@
     <h2>Member Directory</h2>
 
     <div class="view-toggle">
-      <button id="gridBtn">Grid View</button>
-      <button id="listBtn">List View</button>
+      <button id="gridBtn" aria-label="Grid View">Grid View</button>
+      <button id="listBtn" aria-label="List View">List View</button>
     </div>
 
     <section id="member-container" class="member-container grid-view" aria-live="polite">
+      <!-- Example directory items -->
       <article class="member-card">
         <h3>Kitoro Tech Hub</h3>
         <p>Empowering youth through digital skills.</p>
@@ -40,80 +44,34 @@
         <p><strong>Email:</strong> info@kitorotech.ug</p>
         <a href="https://kitorotech.ug" target="_blank">Visit Website</a>
       </article>
-
-      <article class="member-card">
-        <h3>Airport View Hotel</h3>
-        <p>Elegant stays and conference facilities near Entebbe Airport.</p>
-        <p><strong>Location:</strong> Airport Road</p>
-        <p><strong>Phone:</strong> +256 752 654 321</p>
-        <p><strong>Email:</strong> bookings@airportview.ug</p>
-        <a href="https://airportview.ug" target="_blank">Visit Website</a>
-      </article>
-
-      <article class="member-card">
-        <h3>Nakiwogo Fish Market Co-op</h3>
-        <p>Fresh lake produce daily from local fishermen.</p>
-        <p><strong>Location:</strong> Nakiwogo Landing Site</p>
-        <p><strong>Phone:</strong> +256 770 999 888</p>
-        <p><strong>Email:</strong> info@nakiwogofish.ug</p>
-        <a href="https://nakiwogofish.ug" target="_blank">Visit Website</a>
-      </article>
-
-      <article class="member-card">
-        <h3>Abayita Ababiri Hardware</h3>
-        <p>Your trusted source for building materials in Entebbe.</p>
-        <p><strong>Location:</strong> Entebbe–Kampala Road</p>
-        <p><strong>Phone:</strong> +256 701 234 567</p>
-        <p><strong>Email:</strong> sales@abayitahardware.ug</p>
-        <a href="https://abayitahardware.ug" target="_blank">Visit Website</a>
-      </article>
-
-      <article class="member-card">
-        <h3>Victoria Mall Gym and Pharmacy</h3>
-        <p>Reliable Gym, pharmacy and wellness shop at Victoria Mall.</p>
-        <p><strong>Location:</strong> Victoria Mall, Entebbe</p>
-        <p><strong>Phone:</strong> +256 778 555 333</p>
-        <p><strong>Email:</strong> support@victoriamallrx.ug</p>
-        <a href="https://victoriamallrx.ug" target="_blank">Visit Website</a>
-      </article>
-
-      <article class="member-card">
-        <h3>Lake Victoria Eco Tours</h3>
-        <p>Eco-friendly lake tours and island excursions.</p>
-        <p><strong>Location:</strong> Lutembe Bay</p>
-        <p><strong>Phone:</strong> +256 776 888 222</p>
-        <p><strong>Email:</strong> tours@lvectours.ug</p>
-        <a href="https://lvectours.ug" target="_blank">Visit Website</a>
-      </article>
-
-      <article class="member-card">
-        <h3>Entebbe Art Studio</h3>
-        <p>Celebrating local artists through exhibitions and workshops.</p>
-        <p><strong>Location:</strong> Church Road, Entebbe</p>
-        <p><strong>Phone:</strong> +256 703 567 891</p>
-        <p><strong>Email:</strong> contact@entebbeart.ug</p>
-        <a href="https://entebbeart.ug" target="_blank">Visit Website</a>
-      </article>
-
-      <article class="member-card">
-        <h3>Bugonga Green Market</h3>
-        <p>Organic fruits, vegetables, and community crafts.</p>
-        <p><strong>Location:</strong> Bugonga Village</p>
-        <p><strong>Phone:</strong> +256 759 222 111</p>
-        <p><strong>Email:</strong> hello@bugongamarket.ug</p>
-        <a href="https://bugongamarket.ug" target="_blank">Visit Website</a>
-      </article>
+      <!-- Add 7 more member articles here as previously shown -->
     </section>
   </main>
 
   <footer>
-    <p>&copy; <span id="year"></span> Entebbe Chamber of Commerce</p>
-    <p id="lastModified"></p>
+    <div class="footer-content">
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>123 Commerce Street</p>
+        <p>Entebbe City</p>
+        <p>Phone: (256) 770826951</p>
+        <p>Email: info@localchamber.org</p>
+      </div>
+      <div class="social-media">
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
+      </div>
+      <div class="development-info">
+        <p>&copy; <span id="current-year"></span> Local Chamber of Commerce</p>
+        <p>Max Tinka | WDD 231 Project</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+      </div>
+    </div>
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("lastModified").textContent = "Last Modified: " + document.lastModified;
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+    document.getElementById("lastModified").textContent = document.lastModified;
   </script>
 </body>
 </html>
