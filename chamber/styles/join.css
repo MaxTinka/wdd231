@@ -10,6 +10,7 @@ body {
 a {
   color: #3498db;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 a:hover,
@@ -38,6 +39,7 @@ a:focus {
 .field-label {
   font-weight: 500;
   margin-bottom: 0.3rem;
+  transition: color 0.3s ease;
 }
 
 input[type="text"],
@@ -48,7 +50,11 @@ textarea {
   border: 2px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
-  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  background-color: #fff;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 input[type="text"]:focus,
@@ -60,7 +66,7 @@ textarea:focus {
   background-color: #f0f8ff;
 }
 
-/* Error message */
+/* Error state */
 .error-message {
   color: #e74c3c;
   font-size: 0.875rem;
@@ -68,7 +74,6 @@ textarea:focus {
   min-height: 1.2em;
 }
 
-/* Invalid input */
 input.invalid,
 textarea.invalid {
   border-color: #e74c3c;
@@ -86,16 +91,16 @@ textarea.invalid {
   animation: shake 0.3s ease;
 }
 
-/* Membership cards */
+/* Membership Selection */
 .membership-option {
   display: inline-block;
   margin: 0.5rem;
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: 8px;
+  padding: 0;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   outline-offset: 2px;
-  padding: 0;
 }
 
 .membership-option[aria-checked="true"],
@@ -111,9 +116,13 @@ textarea.invalid {
   background-color: #f7f9fc;
   border-radius: 6px;
   user-select: none;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.5s ease, opacity 0.5s ease;
   opacity: 0;
   transform: translateY(20px);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.5s ease,
+    opacity 0.5s ease;
 }
 
 /* Animate membership cards on page load */
@@ -140,7 +149,7 @@ textarea.invalid {
 
 .primary-button {
   background-color: #3498db;
-  color: white;
+  color: #fff;
 }
 
 .primary-button:hover,
@@ -161,7 +170,29 @@ textarea.invalid {
   outline: none;
 }
 
-/* Dark mode styles */
+/* Focus accessibility */
+input:focus,
+textarea:focus,
+button:focus,
+.membership-option:focus {
+  outline: 3px solid #3498db;
+  outline-offset: 2px;
+}
+
+/* Responsive Grid */
+@media (min-width: 600px) {
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .wide-field {
+    grid-column: span 2;
+  }
+}
+
+/* Dark Mode Styles */
 body.dark-mode {
   background-color: #121212;
   color: #eee;
@@ -228,26 +259,4 @@ body.dark-mode .button.secondary-button {
 body.dark-mode .button.secondary-button:hover,
 body.dark-mode .button.secondary-button:focus {
   background-color: #444;
-}
-
-/* Focus styles */
-input:focus,
-textarea:focus,
-button:focus,
-.membership-option:focus {
-  outline: 3px solid #3498db;
-  outline-offset: 2px;
-}
-
-/* Responsive grid for form */
-@media (min-width: 600px) {
-  .form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
-  }
-
-  .wide-field {
-    grid-column: span 2;
-  }
 }
