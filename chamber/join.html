@@ -3,202 +3,341 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Join the Entebbe Chamber of Commerce" />
-  <title>Join | Entebbe Chamber of Commerce</title>
+  <meta name="description" content="Join the Local Chamber of Commerce - Membership Application" />
+  <meta name="author" content="Max Tinka" />
+  <meta property="og:title" content="Join the Local Chamber of Commerce" />
+  <meta property="og:description" content="Apply for membership with our chamber" />
+  <meta property="og:image" content="https://yourdomain.com/images/social-preview.jpg" />
+  <meta property="og:url" content="https://yourdomain.com/chamber/join.html" />
+  <title>Join | Local Chamber of Commerce</title>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="styles/base.css" />
-  <link rel="stylesheet" href="styles/larger.css" />
-  <style>
-    /* Weather Widget Styling */
-    .weather-widget {
-      margin: 2rem auto;
-      padding: 1rem;
-      background: #f4f9ff;
-      border-radius: 10px;
-      max-width: 300px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .weather-widget h3 {
-      margin-top: 0;
-      color: #2c3e50;
-    }
-
-    .weather-widget img {
-      vertical-align: middle;
-      width: 60px;
-      height: 60px;
-    }
-
-    /* Membership Card Styling */
-    .membership-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-
-    .membership-cards .card {
-      background: #ffffff;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .membership-cards .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Dark Mode Prep */
-    @media (prefers-color-scheme: dark) {
-      body {
-        background: #121212;
-        color: #f1f1f1;
-      }
-
-      header, footer {
-        background: #1e1e1e;
-        color: #fff;
-      }
-
-      .weather-widget {
-        background: #1a1a1a;
-        box-shadow: none;
-      }
-
-      .membership-cards .card {
-        background: #2a2a2a;
-        color: #fff;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles/large.css" media="(min-width: 768px)" />
+  <link rel="stylesheet" href="styles/join.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 </head>
-
 <body>
-  <header>
-    <h1>Entebbe Chamber of Commerce</h1>
-    <nav>
+  <a href="#main-content" class="skip-link">Skip to Main Content</a>
+  
+  <header class="main-header">
+    <div class="header-container">
+      <div class="logo">
+        <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
+          <circle cx="30" cy="30" r="25" fill="#2c3e50" />
+          <text x="30" y="38" font-family="Roboto" font-size="20" fill="white" text-anchor="middle">CC</text>
+        </svg>
+        <span class="name">Local Chamber</span>
+      </div>
+      <button id="menu-button" aria-expanded="false" aria-label="Navigation menu" aria-controls="primary-nav">
+        <span class="hamburger-icon">☰</span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+    <nav id="primary-nav" aria-label="Primary navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="discover.html">Discover</a></li>
         <li><a href="directory.html">Directory</a></li>
-        <li><a href="join.html" class="active">Join</a></li>
+        <li><a href="join.html" aria-current="page">Join</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <h2>Membership Application</h2>
-    <form method="get" action="thankyou.html" aria-label="Chamber Membership Form">
-      <fieldset>
-        <legend>Contact Information</legend>
+  <main id="main-content" class="join-main">
+    <div class="page-header">
+      <h1>Become a Member</h1>
+      <p class="subtitle">Join our network of local businesses and organizations</p>
+    </div>
+    
+    <div class="join-container">
+      <form id="joinForm" method="get" action="thankyou.html" class="join-form" novalidate>
+        <fieldset>
+          <legend><span class="legend-number">1</span> Applicant Information</legend>
+          <div class="form-grid">
+            <label class="form-field">
+              <span class="field-label">First Name*</span>
+              <input type="text" name="firstName" required autocomplete="given-name" title="Enter your first name" />
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+            <label class="form-field">
+              <span class="field-label">Last Name*</span>
+              <input type="text" name="lastName" required autocomplete="family-name" title="Enter your last name" />
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+            <label class="form-field">
+              <span class="field-label">Title/Role</span>
+              <input
+                type="text"
+                name="title"
+                autocomplete="organization-title"
+                pattern="[a-zA-Z\- ]{7,}"
+                title="Your organizational title (minimum 7 characters)"
+              />
+              <span class="hint">Minimum 7 characters (letters, spaces, hyphens only)</span>
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+            <label class="form-field">
+              <span class="field-label">Email*</span>
+              <input
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="example@domain.com"
+                title="Enter a valid email address"
+              />
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+            <label class="form-field">
+              <span class="field-label">Mobile Phone*</span>
+              <input
+                type="tel"
+                name="phone"
+                required
+                autocomplete="tel"
+                pattern="[0-9]{10,15}"
+                title="Enter your mobile phone number (digits only)"
+              />
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+          </div>
+        </fieldset>
+        
+        <fieldset>
+          <legend><span class="legend-number">2</span> Business Information</legend>
+          <div class="form-grid">
+            <label class="form-field">
+              <span class="field-label">Business/Organization Name*</span>
+              <input
+                type="text"
+                name="businessName"
+                required
+                autocomplete="organization"
+                title="Enter your business name"
+              />
+              <span class="error-message" aria-live="polite"></span>
+            </label>
+            <label class="form-field wide-field">
+              <span class="field-label">Business Description</span>
+              <textarea name="businessDescription" title="Describe your business"></textarea>
+            </label>
+          </div>
+        </fieldset>
+        
+        <fieldset class="membership-levels">
+          <legend><span class="legend-number">3</span> Membership Level</legend>
+          <div class="membership-options">
+            <article class="membership-card" tabindex="0">
+              <input
+                type="radio"
+                id="npMembership"
+                name="membershipLevel"
+                value="NP Membership"
+                checked
+                hidden
+              />
+              <label for="npMembership" class="card-label">
+                <h3>NP Membership</h3>
+                <p>For non-profit organizations — No fee</p>
+                <a href="#" class="open-modal" data-modal="npModal" aria-haspopup="dialog">Learn More</a>
+              </label>
+            </article>
 
-        <label>First Name:
-          <input type="text" name="firstname" title="First Name" required autocomplete="given-name">
-        </label>
+            <article class="membership-card" tabindex="0">
+              <input
+                type="radio"
+                id="bronzeMembership"
+                name="membershipLevel"
+                value="Bronze Membership"
+                hidden
+              />
+              <label for="bronzeMembership" class="card-label">
+                <h3>Bronze Membership</h3>
+                <p>Includes event discounts and webinars — $250/year</p>
+                <a href="#" class="open-modal" data-modal="bronzeModal" aria-haspopup="dialog">Learn More</a>
+              </label>
+            </article>
 
-        <label>Last Name:
-          <input type="text" name="lastname" title="Last Name" required autocomplete="family-name">
-        </label>
+            <article class="membership-card" tabindex="0">
+              <input
+                type="radio"
+                id="silverMembership"
+                name="membershipLevel"
+                value="Silver Membership"
+                hidden
+              />
+              <label for="silverMembership" class="card-label">
+                <h3>Silver Membership</h3>
+                <p>Priority training and bigger discounts — $500/year</p>
+                <a href="#" class="open-modal" data-modal="silverModal" aria-haspopup="dialog">Learn More</a>
+              </label>
+            </article>
 
-        <label>Organization Title:
-          <input type="text" name="orgtitle" title="Organization Title" autocomplete="organization-title" pattern="[A-Za-z\-\s]{7,}">
-        </label>
+            <article class="membership-card" tabindex="0">
+              <input
+                type="radio"
+                id="goldMembership"
+                name="membershipLevel"
+                value="Gold Membership"
+                hidden
+              />
+              <label for="goldMembership" class="card-label">
+                <h3>Gold Membership</h3>
+                <p>Spotlight, consultant, max benefits — $1000/year</p>
+                <a href="#" class="open-modal" data-modal="goldModal" aria-haspopup="dialog">Learn More</a>
+              </label>
+            </article>
+          </div>
+        </fieldset>
 
-        <label>Email:
-          <input type="email" name="email" title="Email" required autocomplete="email" placeholder="example@email.com">
-        </label>
+        <input type="hidden" id="timestamp" name="timestamp" />
 
-        <label>Mobile Phone:
-          <input type="tel" name="phone" title="Phone Number" required autocomplete="tel">
-        </label>
-
-        <label>Organization Name:
-          <input type="text" name="organization" title="Organization Name" required autocomplete="organization">
-        </label>
-
-        <label>Membership Level:
-          <select name="membership" title="Membership Level" required>
-            <option value="" disabled selected>Select Membership</option>
-            <option value="np">NP Membership</option>
-            <option value="bronze">Bronze Membership</option>
-            <option value="silver">Silver Membership</option>
-            <option value="gold">Gold Membership</option>
-          </select>
-        </label>
-
-        <label>Organization Description:
-          <textarea name="description" title="Business Description" placeholder="Tell us about your business..."></textarea>
-        </label>
-
-        <input type="hidden" id="timestamp" name="timestamp">
-
-        <input type="submit" value="Apply Now" aria-label="Apply for Membership">
-      </fieldset>
-    </form>
-
-    <section class="membership-cards">
-      <div class="card" id="np">
-        <h3>NP Membership</h3>
-        <a href="#npModal">View Benefits</a>
-      </div>
-      <div class="card" id="bronze">
-        <h3>Bronze Membership</h3>
-        <a href="#bronzeModal">View Benefits</a>
-      </div>
-      <div class="card" id="silver">
-        <h3>Silver Membership</h3>
-        <a href="#silverModal">View Benefits</a>
-      </div>
-      <div class="card" id="gold">
-        <h3>Gold Membership</h3>
-        <a href="#goldModal">View Benefits</a>
-      </div>
-    </section>
-
-    <section class="weather-widget">
-      <h3>Current Weather</h3>
-      <div id="weather">
-        <p><strong>Loading weather...</strong></p>
-      </div>
-    </section>
+        <div class="form-actions">
+          <button type="submit" class="button primary-button">Submit Application</button>
+          <button type="reset" class="button secondary-button">Reset Form</button>
+        </div>
+      </form>
+    </div>
   </main>
 
-  <footer>
-    <p>&copy; <span id="year"></span> Entebbe Chamber of Commerce</p>
-    <p id="lastModified"></p>
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-section contact-info">
+        <h3>Contact Us</h3>
+        <address>
+          <p>123 Commerce Street</p>
+          <p>Entebbe City</p>
+          <p>Phone: <a href="tel:+256770826951">(256) 770826951</a></p>
+          <p>Email: <a href="mailto:info@localchamber.org">info@localchamber.org</a></p>
+        </address>
+      </div>
+      <div class="footer-section social-media">
+        <h3 class="sr-only">Social Media</h3>
+        <div class="social-links">
+          <!-- Social media icons (can link actual URLs later) -->
+          <!-- Add your social icons here -->
+        </div>
+      </div>
+      <div class="footer-section development-info">
+        <p>&copy; <span id="current-year"></span> Local Chamber of Commerce</p>
+        <p>Max Tinka | WDD 231 Project</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+      </div>
+    </div>
   </footer>
 
+  <!-- Modals for Membership Benefits -->
+  <div id="npModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="npModalTitle" tabindex="-1" hidden>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="npModalTitle">NP Membership Benefits</h2>
+      <ul>
+        <li>Free listing in directory</li>
+        <li>Member newsletter</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="bronzeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="bronzeModalTitle" tabindex="-1" hidden>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="bronzeModalTitle">Bronze Membership Benefits</h2>
+      <ul>
+        <li>All NP benefits</li>
+        <li>10% event discounts</li>
+        <li>Training webinars</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="silverModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="silverModalTitle" tabindex="-1" hidden>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="silverModalTitle">Silver Membership Benefits</h2>
+      <ul>
+        <li>All Bronze benefits</li>
+        <li>20% event discounts</li>
+        <li>Priority training access</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="goldModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="goldModalTitle" tabindex="-1" hidden>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="goldModalTitle">Gold Membership Benefits</h2>
+      <ul>
+        <li>All Silver benefits</li>
+        <li>30% event discounts</li>
+        <li>Homepage spotlight</li>
+        <li>Dedicated consultant</li>
+      </ul>
+    </div>
+  </div>
+
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("lastModified").textContent = `Last Modified: ${document.lastModified}`;
+    // Auto-fill year and last modified
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+    document.getElementById("lastModified").textContent = document.lastModified;
+
+    // Set timestamp on form load
     document.getElementById("timestamp").value = new Date().toISOString();
 
-    const weatherContainer = document.getElementById('weather');
-    const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY'; // ← Replace with your actual key
-    const city = 'Entebbe';
+    // Mobile menu toggle
+    const menuButton = document.getElementById('menu-button');
+    const primaryNav = document.getElementById('primary-nav');
+    menuButton.addEventListener('click', () => {
+      const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!expanded));
+      primaryNav.classList.toggle('active');
+    });
 
-    async function fetchWeather() {
-      try {
-        const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
-        );
-        const data = await response.json();
-        const icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-        weatherContainer.innerHTML = `
-          <p><strong>${data.name}</strong></p>
-          <p><img src="${icon}" alt="${data.weather[0].description}"> ${data.main.temp}°C</p>
-          <p>${data.weather[0].description}</p>
-        `;
-      } catch (err) {
-        weatherContainer.innerHTML = "<p>Weather unavailable.</p>";
-      }
-    }
-    fetchWeather();
+    // Modal open/close logic
+    const openModalLinks = document.querySelectorAll('.open-modal');
+    const modals = document.querySelectorAll('.modal');
+
+    openModalLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const modalId = link.dataset.modal;
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.hidden = false;
+          modal.querySelector('.modal-close').focus();
+        }
+      });
+    });
+
+    modals.forEach(modal => {
+      const closeBtn = modal.querySelector('.modal-close');
+
+      // Close on button click
+      closeBtn.addEventListener('click', () => {
+        modal.hidden = true;
+      });
+
+      // Close on Escape key
+      modal.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          modal.hidden = true;
+          const openLink = document.querySelector(`.open-modal[data-modal="${modal.id}"]`);
+          if (openLink) openLink.focus();
+        }
+      });
+
+      // Close on click outside modal-content
+      modal.addEventListener('click', e => {
+        if (e.target === modal) {
+          modal.hidden = true;
+        }
+      });
+    });
+
+    // Form validation could be enhanced here (add your previous JS validation if needed)
   </script>
 </body>
 </html>
