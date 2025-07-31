@@ -18,6 +18,126 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Animations and modal styles */
+
+    .membership-card {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s forwards;
+    }
+    .membership-card:nth-child(1) { animation-delay: 0.1s; }
+    .membership-card:nth-child(2) { animation-delay: 0.3s; }
+    .membership-card:nth-child(3) { animation-delay: 0.5s; }
+    .membership-card:nth-child(4) { animation-delay: 0.7s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+    .modal:not([hidden]) {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+      outline: none;
+      position: relative;
+    }
+    .modal:not([hidden]) .modal-content {
+      transform: scale(1);
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Membership card selection */
+    input[type="radio"]:checked + label.card-label {
+      border: 3px solid #2c3e50;
+      background-color: #f0f8ff;
+      box-shadow: 0 0 10px rgba(44, 62, 80, 0.5);
+    }
+    .card-label {
+      cursor: pointer;
+      display: block;
+      padding: 1rem;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .membership-card:focus-within .card-label {
+      outline: 2px solid #3498db;
+      outline-offset: 2px;
+    }
+
+    /* Color contrast and buttons */
+    body {
+      color: #222222;
+      background-color: #ffffff;
+      font-family: 'Roboto', sans-serif;
+    }
+    a,
+    button {
+      color: #2c3e50;
+    }
+    .button.primary-button {
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .button.primary-button:hover,
+    .button.primary-button:focus {
+      background-color: #1a2a3a;
+      outline: none;
+    }
+    .button.secondary-button {
+      background-color: #ecf0f1;
+      color: #2c3e50;
+      border: 1px solid #2c3e50;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .button.secondary-button:hover,
+    .button.secondary-button:focus {
+      background-color: #d0d7de;
+      outline: none;
+    }
+  </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to Main Content</a>
@@ -74,7 +194,7 @@
                 type="text"
                 name="title"
                 autocomplete="organization-title"
-                pattern="[a-zA-Z\- ]{7,}"
+                pattern="^[a-zA-Z\- ]{7,}$"
                 title="Your organizational title (minimum 7 characters)"
               />
               <span class="hint">Minimum 7 characters (letters, spaces, hyphens only)</span>
@@ -138,6 +258,7 @@
                 name="membershipLevel"
                 value="NP Membership"
                 checked
+                required
                 hidden
               />
               <label for="npMembership" class="card-label">
@@ -153,6 +274,7 @@
                 id="bronzeMembership"
                 name="membershipLevel"
                 value="Bronze Membership"
+                required
                 hidden
               />
               <label for="bronzeMembership" class="card-label">
@@ -168,6 +290,7 @@
                 id="silverMembership"
                 name="membershipLevel"
                 value="Silver Membership"
+                required
                 hidden
               />
               <label for="silverMembership" class="card-label">
@@ -183,6 +306,7 @@
                 id="goldMembership"
                 name="membershipLevel"
                 value="Gold Membership"
+                required
                 hidden
               />
               <label for="goldMembership" class="card-label">
@@ -197,7 +321,7 @@
         <input type="hidden" id="timestamp" name="timestamp" />
 
         <div class="form-actions">
-          <button type="submit" class="button primary-button">Submit Application</button>
+          <input type="submit" class="button primary-button" value="Submit Application" />
           <button type="reset" class="button secondary-button">Reset Form</button>
         </div>
       </form>
@@ -296,7 +420,7 @@
       primaryNav.classList.toggle('active');
     });
 
-    // Modal open/close logic
+    // Modal open/close logic with focus management
     const openModalLinks = document.querySelectorAll('.open-modal');
     const modals = document.querySelectorAll('.modal');
 
@@ -307,7 +431,9 @@
         const modal = document.getElementById(modalId);
         if (modal) {
           modal.hidden = false;
-          modal.querySelector('.modal-close').focus();
+          const modalContent = modal.querySelector('.modal-content');
+          modalContent.setAttribute('tabindex', '-1');
+          modalContent.focus();
         }
       });
     });
@@ -336,8 +462,6 @@
         }
       });
     });
-
-    // Form validation could be enhanced here (add your previous JS validation if needed)
   </script>
 </body>
 </html>
