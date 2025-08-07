@@ -1,128 +1,272 @@
-/* ====== Base Styles ====== */
-:root {
-  --primary-color: #d84315;
-  --secondary-color: #fbc02d;
-  --text-color: #333;
-  --bg-color: #f5f5f5;
-  --font-heading: 'Roboto Slab', serif;
-  --font-body: 'Open Sans', sans-serif;
-}
-
-* {
-  box-sizing: border-box;
+/* ==========================
+   Base and Typography
+========================== */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
   margin: 0;
   padding: 0;
-}
-
-body {
-  font-family: var(--font-body);
-  background-color: var(--bg-color);
-  color: var(--text-color);
   line-height: 1.6;
-  padding: 1rem;
 }
 
-/* ====== Headings ====== */
 h1, h2, h3 {
-  font-family: var(--font-heading);
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
+  font-family: 'Roboto Slab', serif;
+  color: #d84315;
+  margin-top: 0;
 }
 
 h1 {
   font-size: 2.5rem;
-  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 h2 {
   font-size: 2rem;
-  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 h3 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-/* ====== Layout Containers ====== */
+/* ==========================
+   Container and Layout
+========================== */
 .container {
+  width: 90%;
   max-width: 1200px;
-  margin: auto;
-  padding: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 0;
 }
 
-/* ====== Vendor Grid ====== */
-#vendor-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
   margin-top: 2rem;
 }
 
-/* ====== Vendor Card ====== */
+/* ==========================
+   Header
+========================== */
+header {
+  background-color: #fff;
+  border-bottom: 3px solid #d84315;
+  padding: 1rem 0;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d84315;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.logo svg {
+  flex-shrink: 0;
+}
+
+.logo .name {
+  font-family: 'Roboto Slab', serif;
+}
+
+/* ==========================
+   Navigation
+========================== */
+#primary-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+#primary-nav li a {
+  text-decoration: none;
+  color: #d84315;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+#primary-nav li a:hover,
+#primary-nav li a:focus {
+  color: #fbc02d;
+  outline: none;
+}
+
+#primary-nav li a[aria-current="page"] {
+  border-bottom: 2px solid #d84315;
+}
+
+#menu-button {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #d84315;
+}
+
+.hamburger-icon {
+  user-select: none;
+}
+
+/* Small screen navigation toggle */
+@media (max-width: 768px) {
+  #menu-button {
+    display: block;
+  }
+
+  #primary-nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    display: none;
+    background-color: #fff;
+    position: absolute;
+    top: 64px; /* header height approx */
+    right: 1rem;
+    border: 1px solid #d84315;
+    padding: 1rem;
+    border-radius: 6px;
+    width: 200px;
+    box-shadow: 0 2px 8px rgba(216, 67, 21, 0.3);
+    z-index: 10;
+  }
+
+  #primary-nav.open ul {
+    display: flex;
+  }
+}
+
+/* ==========================
+   Main Content
+========================== */
+main section {
+  margin-bottom: 2rem;
+}
+
+/* Grid for vendor cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Vendor card example styling */
 .vendor-card {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   padding: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: box-shadow 0.3s ease;
 }
 
-.vendor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+.vendor-card:hover,
+.vendor-card:focus-within {
+  box-shadow: 0 4px 15px rgba(216, 67, 21, 0.4);
 }
 
 .vendor-card img {
   width: 100%;
   height: auto;
   border-radius: 6px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .vendor-card h3 {
-  margin-bottom: 0.3rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  color: #d84315;
 }
 
-.vendor-card p {
-  margin-bottom: 0.4rem;
+/* ==========================
+   Footer
+========================== */
+footer {
+  background-color: #2c3e50;
+  color: #f5f5f5;
+  padding: 1.5rem 0;
+  font-size: 0.9rem;
 }
 
-/* ====== Buttons (Optional) ====== */
-button, .btn {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
-  cursor: pointer;
+.footer-content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.contact-info, .social-media, .development-info {
+  flex: 1 1 200px;
+}
+
+.contact-info h3 {
+  color: #fbc02d;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info p {
+  margin: 0.25rem 0;
+}
+
+.social-media a {
+  display: inline-block;
+  margin-right: 1rem;
+  color: #fbc02d;
   font-weight: bold;
-  transition: background-color 0.2s ease;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
 }
 
-button:hover, .btn:hover {
-  background-color: #bf360c;
+.social-media a:hover,
+.social-media a:focus {
+  color: #d84315;
+  outline: none;
 }
 
-/* ====== Utility ====== */
-.text-center {
-  text-align: center;
+.development-info p {
+  margin: 0.25rem 0;
 }
 
-.mt-2 { margin-top: 2rem; }
-.mt-1 { margin-top: 1rem; }
-
-.color-box {
-  padding: 10px;
-  border-radius: 4px;
-  color: #fff;
-  text-align: center;
+/* ==========================
+   Accessibility & Misc
+========================== */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
-/* ====== Media Queries ====== */
-@media (max-width: 600px) {
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
-  .vendor-card {
-    padding: 0.8rem;
-  }
+/* Focus outlines for accessibility */
+a:focus, button:focus {
+  outline: 3px solid #fbc02d;
+  outline-offset: 2px;
 }
