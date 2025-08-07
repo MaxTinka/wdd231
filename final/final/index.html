@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Discover Entebbe's best street food spots with vendor profiles, reviews, and maps." />
   <meta name="author" content="Entebbe Street Food Guide" />
   <meta property="og:title" content="Entebbe Street Food Guide" />
@@ -10,27 +10,27 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="images/og-image.jpg" />
   <meta property="og:url" content="https://yourdomain.com" />
-  
   <title>Entebbe Street Food Guide</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab&display=swap" rel="stylesheet" />
 
   <!-- Main Styles -->
   <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+
   <header>
     <div class="header-container">
-      <div class="logo" aria-label="Entebbe Street Food Guide Logo">
+      <div class="logo">
         <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
           <circle cx="30" cy="30" r="25" fill="#d84315" />
-          <text x="30" y="38" font-family="Roboto Slab" font-size="20" fill="white" text-anchor="middle">ESFG</text>
+          <text x="30" y="38" font-family="Roboto" font-size="20" fill="white" text-anchor="middle">ESF</text>
         </svg>
-        <span class="name">Entebbe Street Food Guide</span>
+        <span class="name">Entebbe Street Food</span>
       </div>
       <button id="menu-button" aria-expanded="false" aria-label="Navigation menu" aria-controls="primary-nav">
         <span class="hamburger-icon">☰</span>
@@ -42,22 +42,20 @@
         <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="discover.html">Discover</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="attributions.html">Attributions</a></li>
-        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
     <section>
-      <h1>Entebbe Street Food Guide</h1>
+      <h1>Welcome to Entebbe Street Food Guide</h1>
       <p>Find the best street food vendors in Entebbe — from Rolex to grilled fish and more!</p>
     </section>
 
     <section>
       <h2>Featured Vendors</h2>
       <div id="vendor-list" class="grid">
-        <!-- Vendor cards will be dynamically inserted here -->
+        <!-- Vendor cards inserted via JavaScript -->
       </div>
     </section>
   </main>
@@ -66,20 +64,20 @@
     <div class="footer-content">
       <div class="contact-info">
         <h3>Contact Us</h3>
-        <p>Entebbe Street Food Guide</p>
-        <p>Entebbe, Uganda</p>
-        <p>Phone: +256 770 826 951</p>
-        <p>Email: info@entebbestreetfood.com</p>
+        <p>123 Entebbe Street</p>
+        <p>Entebbe City, Uganda</p>
+        <p>Phone: (256) 770826951</p>
+        <p>Email: info@entebbfoodguide.com</p>
       </div>
       <div class="social-media">
         <a href="#" aria-label="Facebook">FB</a>
-        <a href="#" aria-label="Instagram">IG</a>
-        <a href="#" aria-label="Twitter">TW</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
       </div>
       <div class="development-info">
         <p>&copy; <span id="current-year"></span> Entebbe Street Food Guide</p>
         <p>Max Tinka | WDD 231 Project</p>
         <p>Last Modified: <span id="lastModified"></span></p>
+        <p><a href="attributions.html">Attributions</a> | <a href="https://your-demo-video-link.com" target="_blank" rel="noopener">Demo Video</a></p>
       </div>
     </div>
   </footer>
@@ -88,19 +86,19 @@
   <script type="module" src="scripts/vendor-data.js"></script>
 
   <script>
-    // Update footer year and last modified date
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    document.getElementById('lastModified').textContent = new Date(document.lastModified).toLocaleString();
-
-    // Hamburger menu toggle
+    // Navigation menu toggle
     const menuButton = document.getElementById('menu-button');
     const primaryNav = document.getElementById('primary-nav');
-
     menuButton.addEventListener('click', () => {
       const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
       menuButton.setAttribute('aria-expanded', !expanded);
       primaryNav.classList.toggle('open');
     });
+
+    // Footer dynamic year and last modified date
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    document.getElementById('lastModified').textContent = document.lastModified;
   </script>
+
 </body>
 </html>
