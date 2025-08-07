@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover Entebbe's best street food spots with vendor profiles, reviews, and maps." />
+  <meta name="author" content="Entebbe Street Food Guide" />
+  <title>Entebbe Street Food Guide</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <header class="container text-center">
+    <h1>Entebbe Street Food Guide</h1>
+    <p>Find the best street food vendors in Entebbe — from Rolex to grilled fish and more!</p>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Featured Vendors</h2>
+      <div id="vendor-list">
+        <!-- Vendor cards will be dynamically inserted here -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="container text-center mt-2">
+    <p>&copy; 2025 Entebbe Street Food Guide. All rights reserved.</p>
+    <p id="last-updated"></p>
+  </footer>
+
+  <!-- Vendor Data Script -->
+  <script type="module" src="scripts/vendor-data.js"></script>
+
+  <!-- Last Updated Script -->
+  <script>
+    const lastUpdatedEl = document.getElementById("last-updated");
+    const now = new Date();
+    const formattedDate = now.toLocaleString('en-GB', {
+      dateStyle: 'long',
+      timeStyle: 'short'
+    });
+    lastUpdatedEl.textContent = `Last updated: ${formattedDate}`;
+  </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "name": "Rolex King",
+    "dish": "Rolex (Egg + Chapati)",
+    "location": "Kitoro Market",
+    "rating": 4.8,
+    "price": "UGX 3,000",
+    "image": "images/rolex-king.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Entebbe Grill House",
+    "dish": "Grilled Chicken",
+    "location": "Nakiwogo",
+    "rating": 4.6,
+    "price": "UGX 7,000",
+    "image": "images/grill-house.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Mubende Chips & Chicken",
+    "dish": "Fried Chicken + Chips",
+    "location": "Kampala Road",
+    "rating": 4.5,
+    "price": "UGX 5,000",
+    "image": "images/mubende.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Katogo Spot",
+    "dish": "Katogo with Matoke",
+    "location": "Katabi",
+    "rating": 4.2,
+    "price": "UGX 4,000",
+    "image": "images/katogo.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Entebbe Samosa House",
+    "dish": "Beef Samosas",
+    "location": "Berkley Road",
+    "rating": 4.7,
+    "price": "UGX 2,000",
+    "image": "images/samosa-house.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Street Smoothies",
+    "dish": "Fresh Fruit Smoothies",
+    "location": "Victoria Mall Entrance",
+    "rating": 4.9,
+    "price": "UGX 5,000",
+    "image": "images/smoothies.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Maama Naki’s Snacks",
+    "dish": "Mandazi + Tea",
+    "location": "Lugonjo",
+    "rating": 4.3,
+    "price": "UGX 1,500",
+    "image": "images/mandazi.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Entebbe Fish Fryer",
+    "dish": "Deep Fried Tilapia",
+    "location": "Waterfront",
+    "rating": 4.6,
+    "price": "UGX 10,000",
+    "image": "images/tilapia.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Street Skewers",
+    "dish": "Beef Skewers",
+    "location": "Kitoro Night Market",
+    "rating": 4.4,
+    "price": "UGX 3,500",
+    "image": "images/skewers.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Mukeeka Delight",
+    "dish": "Boiled Cassava",
+    "location": "Abayita Ababiri",
+    "rating": 4.1,
+    "price": "UGX 1,000",
+    "image": "images/cassava.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Kikalayi Hub",
+    "dish": "Pork & Cassava",
+    "location": "Kitoro",
+    "rating": 4.5,
+    "price": "UGX 8,000",
+    "image": "images/kikalayi.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Chapati Express",
+    "dish": "Chapati (Plain or Egg)",
+    "location": "Behind Total Fuel Station",
+    "rating": 4.0,
+    "price": "UGX 1,000–2,000",
+    "image": "images/chapati.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Local Bites",
+    "dish": "Gnuts + Sweet Potatoes",
+    "location": "Banga Market",
+    "rating": 4.2,
+    "price": "UGX 3,000",
+    "image": "images/gnuts.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Matoke Queen",
+    "dish": "Steamed Matoke",
+    "location": "Entebbe Central",
+    "rating": 4.3,
+    "price": "UGX 4,000",
+    "image": "images/matoke.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Entebbe Roasted Maize",
+    "dish": "Roasted Maize",
+    "location": "Main Street",
+    "rating": 4.4,
+    "price": "UGX 1,000",
+    "image": "images/maize.jpg"
+  }
+]
