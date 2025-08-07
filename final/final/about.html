@@ -2,82 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Learn about the Entebbe Street Food Guide project and its mission to promote local food culture." />
-  <meta name="author" content="Your Name" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About the Entebbe Street Food Guide – Learn about our mission and team." />
+  <meta name="author" content="Entebbe Street Food Guide" />
+  <meta property="og:title" content="About – Entebbe Street Food Guide" />
+  <meta property="og:description" content="Learn more about the Entebbe Street Food Guide, our mission, and our team." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/og-image.jpg" />
+  <meta property="og:url" content="https://yourdomain.com/about.html" />
+  
   <title>About – Entebbe Street Food Guide</title>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="About – Entebbe Street Food Guide" />
-  <meta property="og:description" content="Learn about the Entebbe Street Food Guide project and its mission." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourdomain.com/finalproject/about.html" />
-  <meta property="og:image" content="images/about-og.jpg" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab&display=swap" rel="stylesheet">
 
-  <link rel="icon" href="favicon.ico" />
-  <link href="css/main.css" rel="stylesheet" />
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 
-  <script type="module" defer src="js/main.js"></script>
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>Entebbe Street Food Guide</h1>
-      <button id="nav-toggle" aria-label="Toggle navigation menu">&#9776;</button>
-      <nav id="main-nav" class="nav-closed">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="discover.html">Discover</a></li>
-          <li><a href="about.html" aria-current="page">About</a></li>
-          <li><a href="formaction.html">Contact</a></li>
-          <li><a href="final.html">Final</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header class="container text-center">
+    <h1>About Entebbe Street Food Guide</h1>
+    <p>Our mission is to connect locals and visitors to the best street food experiences in Entebbe.</p>
   </header>
 
-  <main>
-    <section class="about-intro">
-      <h2>About This Project</h2>
-      <p>
-        The Entebbe Street Food Guide is designed to celebrate and promote the vibrant street food culture of Entebbe, Uganda. Our mission is to provide locals and tourists with reliable, up-to-date information about where to find delicious, affordable, and hygienic street food.
-      </p>
-      <p>
-        This website was created as a final project for a web development course, demonstrating responsive design, accessibility, and dynamic content powered by JavaScript.
-      </p>
+  <nav class="container">
+    <ul class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="discover.html">Discover</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section>
+      <h2>Our Story</h2>
+      <p>The Entebbe Street Food Guide was created to help people discover the rich flavors and vibrant culture of street food vendors across Entebbe. Our goal is to provide trustworthy information on hygiene, pricing, and specialties to make your experience safe and enjoyable.</p>
     </section>
 
-    <section class="project-vision">
-      <h2>Our Vision</h2>
-      <p>
-        We believe food is a universal language that brings people together. By connecting food lovers with trusted vendors, we aim to support small businesses and enrich the cultural experience of visitors to Entebbe.
-      </p>
-    </section>
-
-    <section class="technology-used">
-      <h2>Technology Used</h2>
-      <ul>
-        <li>HTML5 with semantic markup</li>
-        <li>CSS3 with responsive layout techniques (Grid and Flexbox)</li>
-        <li>JavaScript ES Modules for dynamic data fetching and user interaction</li>
-        <li>Fetch API with asynchronous programming and error handling</li>
-        <li>LocalStorage for persistent user preferences</li>
-        <li>Accessible modal dialogs for vendor details</li>
-      </ul>
-    </section>
-
-    <section class="attributions">
-      <h2>Attributions</h2>
-      <p>
-        Images and vendor data have been sourced with permission or created for this project. For full credits, please see the <a href="attributions.html">Attributions Page</a>.
-      </p>
+    <section>
+      <h2>Meet the Team</h2>
+      <p>Max Tinka – Project Lead and Developer</p>
+      <p>Our team is passionate about food, culture, and technology, working to bring you an easy-to-use guide.</p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Entebbe Street Food Guide</p>
-    <p>Last updated: <span id="last-updated"></span></p>
-    <p><a href="https://youtu.be/yourvideolink" target="_blank" rel="noopener noreferrer">Project Demo Video</a></p>
+    <div class="footer-content">
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>123 Entebbe Street</p>
+        <p>Entebbe City, Uganda</p>
+        <p>Phone: (256) 770-826951</p>
+        <p>Email: info@entebbestreetfood.org</p>
+      </div>
+      <div class="social-media">
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
+      </div>
+      <div class="development-info">
+        <p>&copy; <span id="current-year"></span> Entebbe Street Food Guide</p>
+        <p>Max Tinka | WDD 231 Project</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    const lastModified = new Date(document.lastModified);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('lastModified').textContent = lastModified.toLocaleDateString('en-GB', options);
+  </script>
 </body>
 </html>
