@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Discover Entebbe's best street food spots with vendor profiles, reviews, and maps." />
   <meta name="author" content="Entebbe Street Food Guide" />
+  <meta property="og:title" content="Entebbe Street Food Guide" />
+  <meta property="og:description" content="Explore the best local street food vendors in Entebbe with maps, menus, and reviews." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/og-image.jpg" />
+  <meta property="og:url" content="https://yourdomain.com" />
+  
   <title>Entebbe Street Food Guide</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles/main.css" />
-
-  <!-- Favicon (optional) -->
+  <!-- Favicon -->
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
   <header class="container text-center">
@@ -22,25 +28,34 @@
     <p>Find the best street food vendors in Entebbe — from Rolex to grilled fish and more!</p>
   </header>
 
+  <nav class="container">
+    <ul class="nav">
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="discover.html">Discover</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
   <main class="container">
     <section>
       <h2>Featured Vendors</h2>
-      <div id="vendor-list">
-        <!-- Vendor cards will be dynamically inserted here -->
+      <div id="vendor-list" class="grid">
+        <!-- Vendor cards inserted via JavaScript -->
       </div>
     </section>
   </main>
 
   <footer class="container text-center mt-2">
     <p>&copy; 2025 Entebbe Street Food Guide. All rights reserved.</p>
+    <p><a href="attributions.html">Attributions</a> | <a href="https://your-demo-video-link.com" target="_blank">Demo Video</a></p>
     <p id="last-updated"></p>
   </footer>
 
-  <!-- Vendor Data Script -->
+  <!-- Scripts -->
   <script type="module" src="scripts/vendor-data.js"></script>
 
-  <!-- Last Updated Script -->
   <script>
+    // Update footer with last updated time
     const lastUpdatedEl = document.getElementById("last-updated");
     const now = new Date();
     const formattedDate = now.toLocaleString('en-GB', {
