@@ -47,7 +47,10 @@
 
   <footer class="container text-center mt-2">
     <p>&copy; 2025 Entebbe Street Food Guide. All rights reserved.</p>
-    <p><a href="attributions.html">Attributions</a> | <a href="https://your-demo-video-link.com" target="_blank">Demo Video</a></p>
+    <p>
+      <a href="attributions.html">Attributions</a> |
+      <a href="https://your-demo-video-link.com" target="_blank" rel="noopener">Demo Video</a>
+    </p>
     <p id="last-updated"></p>
   </footer>
 
@@ -55,7 +58,7 @@
   <script type="module" src="scripts/vendor-data.js"></script>
 
   <script>
-    // Update footer with last updated time
+    // Footer last-updated date
     const lastUpdatedEl = document.getElementById("last-updated");
     const now = new Date();
     const formattedDate = now.toLocaleString('en-GB', {
