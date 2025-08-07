@@ -1,137 +1,152 @@
 [
   {
     "id": 1,
-    "name": "Rolex King",
-    "dish": "Rolex (Egg + Chapati)",
+    "name": "Mama Naki's Rolex",
     "location": "Kitoro Market",
+    "specialty": "Rolex (egg & chapati wrap)",
+    "price": "UGX 3,000 - 5,000",
     "rating": 4.8,
-    "price": "UGX 3,000",
-    "image": "images/rolex-king.jpg"
+    "hygiene": "Excellent",
+    "description": "Famous for her crispy chapatis and perfectly spiced eggs, Mama Naki has a loyal following."
   },
   {
     "id": 2,
-    "name": "Entebbe Grill House",
-    "dish": "Grilled Chicken",
-    "location": "Nakiwogo",
+    "name": "Lakeview Fish Fry",
+    "location": "Near Entebbe Pier",
+    "specialty": "Fried Tilapia",
+    "price": "UGX 10,000 - 15,000",
     "rating": 4.6,
-    "price": "UGX 7,000",
-    "image": "images/grill-house.jpg"
+    "hygiene": "Very Good",
+    "description": "Freshly caught tilapia, fried to golden perfection with local spices."
   },
   {
     "id": 3,
-    "name": "Mubende Chips & Chicken",
-    "dish": "Fried Chicken + Chips",
-    "location": "Kampala Road",
-    "rating": 4.5,
-    "price": "UGX 5,000",
-    "image": "images/mubende.jpg"
+    "name": "Jinja Skewers",
+    "location": "Victoria Mall Entrance",
+    "specialty": "Chicken & Beef Skewers",
+    "price": "UGX 4,000 - 7,000",
+    "rating": 4.3,
+    "hygiene": "Good",
+    "description": "Juicy skewers grilled over open flames, served with spicy sauce."
   },
   {
     "id": 4,
-    "name": "Katogo Spot",
-    "dish": "Katogo with Matoke",
-    "location": "Katabi",
-    "rating": 4.2,
-    "price": "UGX 4,000",
-    "image": "images/katogo.jpg"
+    "name": "Kawoowo Katogo",
+    "location": "Bus Park Corner",
+    "specialty": "Katogo (matoke with beef)",
+    "price": "UGX 6,000 - 8,000",
+    "rating": 4.5,
+    "hygiene": "Good",
+    "description": "A hearty breakfast of mashed matoke and beef stew — a local favorite."
   },
   {
     "id": 5,
-    "name": "Entebbe Samosa House",
-    "dish": "Beef Samosas",
-    "location": "Berkley Road",
-    "rating": 4.7,
-    "price": "UGX 2,000",
-    "image": "images/samosa-house.jpg"
+    "name": "Sweet Tooth Stand",
+    "location": "State House Junction",
+    "specialty": "Mandazi & Sweet Pancakes",
+    "price": "UGX 1,000 - 2,000",
+    "rating": 4.1,
+    "hygiene": "Good",
+    "description": "Light, fluffy mandazi and sweet pancakes to start your day."
   },
   {
     "id": 6,
-    "name": "Street Smoothies",
-    "dish": "Fresh Fruit Smoothies",
-    "location": "Victoria Mall Entrance",
-    "rating": 4.9,
-    "price": "UGX 5,000",
-    "image": "images/smoothies.jpg"
+    "name": "Ggaba Grills",
+    "location": "Entebbe Botanical Garden Road",
+    "specialty": "Grilled Goat Meat",
+    "price": "UGX 8,000 - 12,000",
+    "rating": 4.4,
+    "hygiene": "Very Good",
+    "description": "Succulent goat meat slow-grilled and served with kachumbari."
   },
   {
     "id": 7,
-    "name": "Maama Naki’s Snacks",
-    "dish": "Mandazi + Tea",
-    "location": "Lugonjo",
-    "rating": 4.3,
-    "price": "UGX 1,500",
-    "image": "images/mandazi.jpg"
+    "name": "Boda Bites",
+    "location": "Boda Stage, Kitoro",
+    "specialty": "Fried Cassava & Groundnut Sauce",
+    "price": "UGX 2,000 - 4,000",
+    "rating": 4.0,
+    "hygiene": "Fair",
+    "description": "A quick, crunchy snack for travelers on the go."
   },
   {
     "id": 8,
-    "name": "Entebbe Fish Fryer",
-    "dish": "Deep Fried Tilapia",
-    "location": "Waterfront",
-    "rating": 4.6,
-    "price": "UGX 10,000",
-    "image": "images/tilapia.jpg"
+    "name": "Sundowner Samosas",
+    "location": "Airport Road",
+    "specialty": "Samosas (Beef & Veg)",
+    "price": "UGX 500 - 1,000",
+    "rating": 4.2,
+    "hygiene": "Good",
+    "description": "Crispy, flavorful samosas freshly made each evening."
   },
   {
     "id": 9,
-    "name": "Street Skewers",
-    "dish": "Beef Skewers",
-    "location": "Kitoro Night Market",
-    "rating": 4.4,
-    "price": "UGX 3,500",
-    "image": "images/skewers.jpg"
+    "name": "Entebbe Smoothie Bar",
+    "location": "Spennah Beach",
+    "specialty": "Fresh Fruit Smoothies",
+    "price": "UGX 3,000 - 6,000",
+    "rating": 4.9,
+    "hygiene": "Excellent",
+    "description": "Healthy, delicious smoothies with tropical fruits and no added sugar."
   },
   {
     "id": 10,
-    "name": "Mukeeka Delight",
-    "dish": "Boiled Cassava",
-    "location": "Abayita Ababiri",
+    "name": "Evening Snacks by Ruth",
+    "location": "Abaita Ababiri",
+    "specialty": "Chapati & Beans",
+    "price": "UGX 2,000 - 3,000",
     "rating": 4.1,
-    "price": "UGX 1,000",
-    "image": "images/cassava.jpg"
+    "hygiene": "Good",
+    "description": "Filling and affordable meals served fresh each evening."
   },
   {
     "id": 11,
-    "name": "Kikalayi Hub",
-    "dish": "Pork & Cassava",
-    "location": "Kitoro",
-    "rating": 4.5,
-    "price": "UGX 8,000",
-    "image": "images/kikalayi.jpg"
+    "name": "Tropical Chips Stand",
+    "location": "Banga Trading Center",
+    "specialty": "Fried Plantains & Chips",
+    "price": "UGX 2,000 - 4,000",
+    "rating": 4.3,
+    "hygiene": "Very Good",
+    "description": "Sweet and savory plantain chips made on the spot."
   },
   {
     "id": 12,
-    "name": "Chapati Express",
-    "dish": "Chapati (Plain or Egg)",
-    "location": "Behind Total Fuel Station",
-    "rating": 4.0,
-    "price": "UGX 1,000–2,000",
-    "image": "images/chapati.jpg"
+    "name": "Roadside Grill Masters",
+    "location": "Lido Beach Roundabout",
+    "specialty": "Street Barbecue (Muchomo)",
+    "price": "UGX 5,000 - 10,000",
+    "rating": 4.6,
+    "hygiene": "Good",
+    "description": "Barbecue meats grilled live with smoky aroma and spicy sauce."
   },
   {
     "id": 13,
-    "name": "Local Bites",
-    "dish": "Gnuts + Sweet Potatoes",
-    "location": "Banga Market",
-    "rating": 4.2,
-    "price": "UGX 3,000",
-    "image": "images/gnuts.jpg"
+    "name": "Garden Bowl",
+    "location": "Botanical Garden Path",
+    "specialty": "Mixed Fruit Bowls",
+    "price": "UGX 2,000 - 5,000",
+    "rating": 4.7,
+    "hygiene": "Excellent",
+    "description": "Fresh fruits diced into refreshing bowls — perfect for a hot day."
   },
   {
     "id": 14,
-    "name": "Matoke Queen",
-    "dish": "Steamed Matoke",
-    "location": "Entebbe Central",
-    "rating": 4.3,
-    "price": "UGX 4,000",
-    "image": "images/matoke.jpg"
+    "name": "Sunset Juice Truck",
+    "location": "Victoria Mall Parking Lot",
+    "specialty": "Sugarcane & Pineapple Juice",
+    "price": "UGX 1,000 - 3,000",
+    "rating": 4.4,
+    "hygiene": "Very Good",
+    "description": "Fresh pressed juice truck serving cool drinks at sundown."
   },
   {
     "id": 15,
-    "name": "Entebbe Roasted Maize",
-    "dish": "Roasted Maize",
-    "location": "Main Street",
-    "rating": 4.4,
-    "price": "UGX 1,000",
-    "image": "images/maize.jpg"
+    "name": "Matooke Mama",
+    "location": "Nkumba University Road",
+    "specialty": "Steamed Matooke & G-nut Sauce",
+    "price": "UGX 4,000 - 6,000",
+    "rating": 4.2,
+    "hygiene": "Good",
+    "description": "Home-style cooked matooke and rich sauce in generous portions."
   }
 ]
