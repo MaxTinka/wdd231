@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore Entebbe's top street food vendors with specialties, ratings, and locations." />
+  <meta name="author" content="Max T" />
+  <meta property="og:title" content="Discover – Entebbe Street Food Guide" />
+  <meta property="og:description" content="Explore Entebbe's top street food vendors with specialties, ratings, and locations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com/discover.html" />
+  <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg" />
+  <title>Discover – Entebbe Street Food Guide</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <script type="module" src="scripts/vendors.js" defer></script>
+  <script type="module" src="scripts/modal.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="discover.html" class="active">Discover</a>
+    </nav>
+    <h1>Discover Street Food Vendors</h1>
+  </header>
+
+  <main>
+    <section class="vendor-gallery" id="vendor-gallery">
+      <p>Loading vendors...</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Entebbe Street Food Guide | <a href="attributions.html">Attributions</a> | <a href="https://youtu.be/your-demo-video" target="_blank">Video Demo</a></p>
+    <p id="lastUpdated"></p>
+    <script>
+      document.getElementById('lastUpdated').textContent = `Last updated: ${new Date(document.lastModified).toLocaleString()}`;
+    </script>
+  </footer>
+
+  <!-- Modal Structure -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button" id="modal-close">&times;</span>
+      <div id="modal-details"></div>
+    </div>
+  </div>
+</body>
+</html>
