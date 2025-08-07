@@ -23,24 +23,41 @@
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
-  <header class="container text-center">
-    <h1>Entebbe Street Food Guide</h1>
-    <p>Find the best street food vendors in Entebbe — from Rolex to grilled fish and more!</p>
+  <header>
+    <div class="header-container">
+      <div class="logo" aria-label="Entebbe Street Food Guide Logo">
+        <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
+          <circle cx="30" cy="30" r="25" fill="#d84315" />
+          <text x="30" y="38" font-family="Roboto Slab" font-size="20" fill="white" text-anchor="middle">ESFG</text>
+        </svg>
+        <span class="name">Entebbe Street Food Guide</span>
+      </div>
+      <button id="menu-button" aria-expanded="false" aria-label="Navigation menu" aria-controls="primary-nav">
+        <span class="hamburger-icon">☰</span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+    <nav id="primary-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="attributions.html">Attributions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
   </header>
-
-  <nav class="container">
-    <ul class="nav">
-      <li><a href="index.html" aria-current="page">Home</a></li>
-      <li><a href="discover.html">Discover</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
 
   <main class="container">
     <section>
+      <h1>Entebbe Street Food Guide</h1>
+      <p>Find the best street food vendors in Entebbe — from Rolex to grilled fish and more!</p>
+    </section>
+
+    <section>
       <h2>Featured Vendors</h2>
       <div id="vendor-list" class="grid">
-        <!-- Vendor cards inserted via JavaScript -->
+        <!-- Vendor cards will be dynamically inserted here -->
       </div>
     </section>
   </main>
@@ -49,14 +66,15 @@
     <div class="footer-content">
       <div class="contact-info">
         <h3>Contact Us</h3>
-        <p>123 Entebbe Street</p>
-        <p>Entebbe City, Uganda</p>
-        <p>Phone: (256) 770-826951</p>
-        <p>Email: info@entebbestreetfood.org</p>
+        <p>Entebbe Street Food Guide</p>
+        <p>Entebbe, Uganda</p>
+        <p>Phone: +256 770 826 951</p>
+        <p>Email: info@entebbestreetfood.com</p>
       </div>
       <div class="social-media">
         <a href="#" aria-label="Facebook">FB</a>
-        <a href="#" aria-label="LinkedIn">LI</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Twitter">TW</a>
       </div>
       <div class="development-info">
         <p>&copy; <span id="current-year"></span> Entebbe Street Food Guide</p>
@@ -70,13 +88,19 @@
   <script type="module" src="scripts/vendor-data.js"></script>
 
   <script>
-    // Update footer year dynamically
+    // Update footer year and last modified date
     document.getElementById('current-year').textContent = new Date().getFullYear();
+    document.getElementById('lastModified').textContent = new Date(document.lastModified).toLocaleString();
 
-    // Update footer last modified date dynamically
-    const lastModified = new Date(document.lastModified);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById('lastModified').textContent = lastModified.toLocaleDateString('en-GB', options);
+    // Hamburger menu toggle
+    const menuButton = document.getElementById('menu-button');
+    const primaryNav = document.getElementById('primary-nav');
+
+    menuButton.addEventListener('click', () => {
+      const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+      menuButton.setAttribute('aria-expanded', !expanded);
+      primaryNav.classList.toggle('open');
+    });
   </script>
 </body>
 </html>
